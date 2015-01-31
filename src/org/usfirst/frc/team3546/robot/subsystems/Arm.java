@@ -76,5 +76,13 @@ public class Arm extends Subsystem {
     		wristCylinder.set(WRIST_DOWN);
     	}
     }
+    
+    public void stopArmWinchMotor(){
+    	armWinchMotor.set(0);
+    }
+    
+    public void stopCarriageMotor(){
+    	carriageMotor.set(0);
+    }
 }
 
