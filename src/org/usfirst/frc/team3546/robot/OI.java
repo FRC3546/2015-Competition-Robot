@@ -42,7 +42,6 @@ public class OI {
 	public Button resetGyroButton;
 	public Button moveToteLiftUpButton;
 	public Button moveToteLiftDownButton;
-	public Button toggleClawCylinderButton;
 	public Button toggleWristCylinderButton;
 	
 	public OI(){

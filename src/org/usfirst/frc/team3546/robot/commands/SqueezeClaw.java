@@ -22,7 +22,7 @@ public class SqueezeClaw extends Command {
     
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	double clawTriggerValue = Robot.oi.XBOXController.getAxis(OI.carriageOperationAxis);
+    	double clawTriggerValue = Robot.oi.XBOXController.getAxis(OI.clawGrabbingAxis);
     	if (clawTriggerValue > OI.clawGrabbingActivatedTolerence) {
     		return false; //Trigger is being held
     	} else {
