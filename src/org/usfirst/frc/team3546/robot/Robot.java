@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.usfirst.frc.team3546.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3546.robot.commands.DashBoardCommunication;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
 import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
@@ -34,9 +34,13 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-		oi = new OI();
-        // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+    	System.out.println("Robot intializing");
+    	oi = new OI();
+		
+		//Start communication with the SmartDashboard
+		DashBoardCommunication dash = new DashBoardCommunication();
+		dash.setRunWhenDisabled(true);
+		dash.start();
     }
 	
 	public void disabledPeriodic() {
@@ -61,6 +65,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        System.out.println("Teleop intializing");
     }
 
     /**
