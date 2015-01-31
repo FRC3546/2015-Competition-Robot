@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3546.robot.subsystems;
 
+import org.usfirst.frc.team3546.robot.OI;
 import org.usfirst.frc.team3546.robot.RobotMap;
 import org.usfirst.frc.team3546.robot.commands.MecanumDrive;
 
@@ -65,9 +66,9 @@ public class DriveBase extends Subsystem {
     }
     
     public void takeJoystickInput(Joystick stick){
-    	double horizontalDriveInput = stick.getAxis(AxisType.kX);
-    	double verticalDriveInput = stick.getAxis(AxisType.kY);
-    	double rotationalDriveInput = stick.getAxis(AxisType.kThrottle);
+    	double horizontalDriveInput = stick.getAxis(OI.drivingHorizontalAxis);
+    	double verticalDriveInput = stick.getAxis(OI.drivingVerticalAxis);
+    	double rotationalDriveInput = stick.getAxis(OI.drivingRotationalAxis);
     	
     	if (drivingOreintation == REVERSEDDRIVE) {
     		horizontalDriveInput = -1 * horizontalDriveInput;
