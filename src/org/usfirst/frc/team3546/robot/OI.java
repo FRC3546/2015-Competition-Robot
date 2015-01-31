@@ -59,11 +59,7 @@ public class OI {
 		
 		toggleWristCylinderButton = new JoystickButton(XBOXController, 6);
 		toggleWristCylinderButton.whenPressed(new ToggleWristCylinder());
-		
-		//Need to find a way to activate the SqueezeClaw command
-//		toggleClawCylinderButton = new JoystickButton(XBOXController, 1);
-//		toggleClawCylinderButton.whenPressed(new SqueezeClaw());
-		
+			
 		moveToteLiftUpButton = new JoystickButton(XBOXController, 0); //D-Pad up
 		moveToteLiftUpButton.whileHeld(new MoveToteLiftUp());
 		
