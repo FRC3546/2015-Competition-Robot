@@ -1,8 +1,17 @@
 package org.usfirst.frc.team3546.robot;
 
+import org.usfirst.frc.team3546.robot.commands.MoveToteLiftDown;
+import org.usfirst.frc.team3546.robot.commands.MoveToteLiftUp;
+import org.usfirst.frc.team3546.robot.commands.ResetGyro;
+import org.usfirst.frc.team3546.robot.commands.SqueezeClaw;
+import org.usfirst.frc.team3546.robot.commands.ToggleDriveOrientation;
+import org.usfirst.frc.team3546.robot.commands.ToggleDrivingCentricity;
+import org.usfirst.frc.team3546.robot.commands.ToggleWristCylinder;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Joystick.AxisType;
 import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -17,13 +26,50 @@ public class OI {
 	//XBOX Axes
 	public static final AxisType carriageOperationAxis = AxisType.kY;
 	public static final AxisType armOperationAxis = AxisType.kThrottle;
+	public static final AxisType clawGrabbingAxis = AxisType.kTwist;
 	
+	//Tolerences
+	public static final double clawGrabbingActivatedTolerence = 0.75;
+	
+	//Joysticks
 	public Joystick drivingJoystick;
 	public Joystick XBOXController;
+	
+	//Buttons
+	public Button toggleDriveOreintationButton;
+	public Button toggleToteliftButton;
+	public Button toggleDrivingCentricityButton;
+	public Button resetGyroButton;
+	public Button moveToteLiftUpButton;
+	public Button moveToteLiftDownButton;
+	public Button toggleClawCylinderButton;
+	public Button toggleWristCylinderButton;
 	
 	public OI(){
 		drivingJoystick = new Joystick(0);
 		XBOXController = new Joystick(1);
+		
+		resetGyroButton = new JoystickButton(drivingJoystick, 4);
+		resetGyroButton.whenPressed(new ResetGyro());
+		
+		toggleDriveOreintationButton = new JoystickButton(drivingJoystick, 3);
+		toggleDriveOreintationButton.whenPressed(new ToggleDriveOrientation());
+		
+		toggleDrivingCentricityButton = new JoystickButton(drivingJoystick, 2);
+		toggleDrivingCentricityButton.whenPressed(new ToggleDrivingCentricity());
+		
+		toggleWristCylinderButton = new JoystickButton(XBOXController, 6);
+		toggleWristCylinderButton.whenPressed(new ToggleWristCylinder());
+		
+		toggleClawCylinderButton = new JoystickButton(XBOXController, 1);
+		toggleClawCylinderButton.whenPressed(new SqueezeClaw());
+		
+		moveToteLiftUpButton = new JoystickButton(XBOXController, 4);
+		moveToteLiftUpButton.whileHeld(new MoveToteLiftUp());
+		
+		moveToteLiftDownButton = new JoystickButton(XBOXController, 4);
+		moveToteLiftDownButton.whileHeld(new MoveToteLiftDown());
+
 	}
 	
 	public double[] getJoysickAxisData(){

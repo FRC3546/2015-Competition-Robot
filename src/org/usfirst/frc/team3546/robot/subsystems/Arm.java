@@ -33,7 +33,7 @@ public class Arm extends Subsystem {
     	wristCylinder = new Solenoid(RobotMap.wristCylinderPCMPort);
     	clawCylinder = new Solenoid(RobotMap.clawCylinderPCMPort);
     	setClawCylinder(CLAW_RELEASE);
-    	setWristCylinder(WRIST_DOWN);
+    	setWristCylinder(WRIST_UP);
     	
     	setDefaultCommand(new UpdateCarriageAndArmWinch());
     }
