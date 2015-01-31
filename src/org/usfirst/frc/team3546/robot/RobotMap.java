@@ -7,16 +7,23 @@ package org.usfirst.frc.team3546.robot;
  */
 public class RobotMap {
 	//Pwm out
-    public static int frontLeftMotorPWM = 0;
-    public static int frontRightMotorPWM = 1;
-    public static int backLeftMotorPWM = 2;
-    public static int backRightMotorPWM = 3;
-    public static int toteLiftMotorPWM = 4;
+    public static final int frontLeftMotorPWM = 0;
+    public static final int frontRightMotorPWM = 1;
+    public static final int backLeftMotorPWM = 2;
+    public static final int backRightMotorPWM = 3;
+    public static final int toteLiftMotorPWM = 4;
+    public static final int carriageMotorPWM = 5;
     
     //Analog in
-    public static int orientationGyroAnlgIn = 0;
+    public static final int orientationGyroAnlgIn = 0;
     
     //Camera
-    public static String cameraName = "cam0";
+    public static final String cameraName = "cam0";
     
+    //Can
+    public static final int armWinchMotorDeviceID = 6;
+    
+    //Pneumatics 
+    public static final int clawCylinderPCMPort = 0;
+    public static final int wristCylinderPCMPort = 0;
 }

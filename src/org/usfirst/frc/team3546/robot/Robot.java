@@ -5,7 +5,11 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+
 import org.usfirst.frc.team3546.robot.commands.ExampleCommand;
+import org.usfirst.frc.team3546.robot.subsystems.Arm;
+import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
+import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
 import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
 
 /**
@@ -17,7 +21,10 @@ import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ToteLift exampleSubsystem = new ToteLift();
+	public static final ToteLift toteLiftSystem = new ToteLift();
+	public static final Arm armSystem = new Arm();
+	public static final DriveBase driveTrain = new DriveBase();
+	public static final PowerDistribution PD = new PowerDistribution();
 	public static OI oi;
 
     Command autonomousCommand;
