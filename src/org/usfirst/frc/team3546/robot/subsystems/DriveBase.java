@@ -64,10 +64,10 @@ public class DriveBase extends Subsystem {
     	return drivingCentricity;
     }
     
-    public void takeJoystickInputs(Joystick left, Joystick right){
-    	double horizontalDriveInput = left.getAxis(AxisType.kX);
-    	double verticalDriveInput = left.getAxis(AxisType.kY);
-    	double rotationalDriveInput = left.getAxis(AxisType.kThrottle);
+    public void takeJoystickInput(Joystick stick){
+    	double horizontalDriveInput = stick.getAxis(AxisType.kX);
+    	double verticalDriveInput = stick.getAxis(AxisType.kY);
+    	double rotationalDriveInput = stick.getAxis(AxisType.kThrottle);
     	
     	if (drivingOreintation == REVERSEDDRIVE) {
     		horizontalDriveInput = -1 * horizontalDriveInput;
