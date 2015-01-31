@@ -6,7 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import org.usfirst.frc.team3546.robot.commands.ExampleCommand;
-import org.usfirst.frc.team3546.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -17,7 +17,7 @@ import org.usfirst.frc.team3546.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
+	public static final ToteLift exampleSubsystem = new ToteLift();
 	public static OI oi;
 
     Command autonomousCommand;
