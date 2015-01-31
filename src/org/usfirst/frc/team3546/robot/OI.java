@@ -9,9 +9,14 @@ import edu.wpi.first.wpilibj.buttons.Button;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	//Joystick Axes
 	public static final AxisType drivingHorizontalAxis = AxisType.kX;
 	public static final AxisType drivingVerticalAxis = AxisType.kY;
 	public static final AxisType drivingRotationalAxis = AxisType.kThrottle; //Weird, but this is the twist axis
+	
+	//XBOX Axes
+	public static final AxisType carriageOperationAxis = AxisType.kY;
+	public static final AxisType armOperationAxis = AxisType.kThrottle;
 	
 	public Joystick drivingJoystick;
 	public Joystick XBOXController;

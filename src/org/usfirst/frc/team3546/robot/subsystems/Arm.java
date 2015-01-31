@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3546.robot.subsystems;
 
 import org.usfirst.frc.team3546.robot.RobotMap;
+import org.usfirst.frc.team3546.robot.commands.UpdateCarriageAndArmWinch;
 
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.Jaguar;
@@ -33,6 +34,8 @@ public class Arm extends Subsystem {
     	clawCylinder = new Solenoid(RobotMap.clawCylinderPCMPort);
     	setClawCylinder(CLAW_RELEASE);
     	setWristCylinder(WRIST_DOWN);
+    	
+    	setDefaultCommand(new UpdateCarriageAndArmWinch());
     }
     
     public void setArmWinchMotor(double output){
