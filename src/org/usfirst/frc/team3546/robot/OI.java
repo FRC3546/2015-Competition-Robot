@@ -23,10 +23,11 @@ public class OI {
 	public static final AxisType drivingVerticalAxis = AxisType.kY;
 	public static final AxisType drivingRotationalAxis = AxisType.kThrottle; //Weird, but this is the twist axis
 	
+	//Kthrottle = righttrigger, knumaxis = nuthin, kx = x on left stick, ky y on left stick, kZ = lefttrigger, kTwist = leftTrigger
 	//XBOX Axes
 	public static final AxisType carriageOperationAxis = AxisType.kY;
-	public static final AxisType armOperationAxis = AxisType.kThrottle;
-	public static final AxisType clawGrabbingAxis = AxisType.kTwist;
+	public static final AxisType armOperationAxis = 0; //Find this axis...
+	public static final AxisType clawGrabbingAxis = AxisType.kThrottle;
 	
 	//Tolerences
 	public static final double clawGrabbingActivatedTolerence = 0.75;

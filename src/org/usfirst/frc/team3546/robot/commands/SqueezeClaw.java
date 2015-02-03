@@ -28,6 +28,10 @@ public class SqueezeClaw extends Command {
     protected void end() {
     	Robot.armSystem.setClawCylinder(Arm.CLAW_RELEASE);
     }
+    
+    protected void interrupted() {
+    	end();
+    }
 
     //These are here only to please the compiler...
     //If they have content in them, they should be moved to above

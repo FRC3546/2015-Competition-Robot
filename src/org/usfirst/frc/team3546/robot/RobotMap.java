@@ -25,5 +25,5 @@ public class RobotMap {
     
     //Pneumatics 
     public static final int clawCylinderPCMPort = 0;
-    public static final int wristCylinderPCMPort = 0;
+    public static final int wristCylinderPCMPort = 1;
 }
