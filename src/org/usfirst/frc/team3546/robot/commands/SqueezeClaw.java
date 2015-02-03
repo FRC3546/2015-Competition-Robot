@@ -36,5 +36,4 @@ public class SqueezeClaw extends Command {
     //These are here only to please the compiler...
     //If they have content in them, they should be moved to above
 	protected void execute() {}
-	protected void interrupted() {}
 }
