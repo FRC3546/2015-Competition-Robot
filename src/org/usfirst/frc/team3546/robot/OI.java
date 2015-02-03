@@ -35,6 +35,9 @@ public class OI {
 	public Joystick drivingJoystick;
 	public Joystick XBOXController;
 	
+	//POV Locations
+	public static final int XBOXdPadPOV = 0;
+	
 	//Buttons
 	public Button toggleDriveOreintationButton;
 	public Button toggleToteliftButton;
@@ -59,12 +62,6 @@ public class OI {
 		
 		toggleWristCylinderButton = new JoystickButton(XBOXController, 6);
 		toggleWristCylinderButton.whenPressed(new ToggleWristCylinder());
-			
-		moveToteLiftUpButton = new JoystickButton(XBOXController, 0); //D-Pad up
-		moveToteLiftUpButton.whileHeld(new MoveToteLiftUp());
-		
-		moveToteLiftDownButton = new JoystickButton(XBOXController, 0);//D-Pad down
-		moveToteLiftDownButton.whileHeld(new MoveToteLiftDown());
 
 	}
 	
