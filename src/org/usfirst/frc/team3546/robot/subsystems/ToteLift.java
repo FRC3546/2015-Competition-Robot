@@ -10,8 +10,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Contains all of the hardware for the tote lift
  */
 public class ToteLift extends Subsystem {
-	public static final double TOTELIFTUP = 1;
-	public static final double TOTELIFTDOWN = -1; 
+	public static final double TOTELIFTUP = 0.25;
+	public static final double TOTELIFTDOWN = -0.25; 
     
 	//Poteniometer/Limit Switches may be added later
 	private VictorSP toteLiftMotor;
