@@ -24,8 +24,8 @@ public class RobotMap {
     public static final int armWinchMotorDeviceID = 0;
     
     //Pneumatics 
-    public static final int clawCylinderPCMPort1 = 0;
-    public static final int clawCylinderPCMPort2 = 1;
-    public static final int wristCylinderPCMPort1 = 2;
-    public static final int wristCylinderPCMPort2 = 3;
+    public static final int clawCylinderPCMPort1 = 2;
+    public static final int clawCylinderPCMPort2 = 3;
+    public static final int wristCylinderPCMPort1 = 0;
+    public static final int wristCylinderPCMPort2 = 1;
 }
