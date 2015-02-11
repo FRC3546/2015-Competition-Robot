@@ -28,4 +28,8 @@ public class RobotMap {
     public static final int clawCylinderPCMPort2 = 3;
     public static final int wristCylinderPCMPort1 = 0;
     public static final int wristCylinderPCMPort2 = 1;
+    
+    //Digital IO
+    public static final int toteLowerLimitSwitchPort = 0;
+    public static final int toteUpperLimitSwitchPort = 1;
 }
