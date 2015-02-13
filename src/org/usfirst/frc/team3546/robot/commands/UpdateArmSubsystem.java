@@ -2,6 +2,7 @@ package org.usfirst.frc.team3546.robot.commands;
 
 import org.usfirst.frc.team3546.robot.OI;
 import org.usfirst.frc.team3546.robot.Robot;
+import org.usfirst.frc.team3546.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -20,7 +21,7 @@ public class UpdateArmSubsystem extends Command {
     	double armWinchPower = Robot.oi.coDriverJoystick.getAxis(OI.armOperationAxis);
     	int dPadValue = Robot.oi.coDriverJoystick.getPOV(OI.miniJoystickPOV);
 
-    	Robot.armSystem.setArmWinchMotor(-armWinchPower);
+    	Robot.armSystem.setArmWinchMotor(-armWinchPower * Arm.armJoystickMultiplier);
     	
     	if (dPadValue == 315 || dPadValue == 0 || dPadValue == 45){ //Dpad is pressed up
     		if (!toteMovementCommand.isRunning()){ //Command not running

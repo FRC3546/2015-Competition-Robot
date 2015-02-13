@@ -21,6 +21,7 @@ public class ToggleDrivingCentricity extends Command {
     		Robot.driveTrain.setCentricity(DriveBase.ROBOTCENTRIC);
     	} else if (currentDrivingCentricity == DriveBase.ROBOTCENTRIC) {
     		Robot.driveTrain.setCentricity(DriveBase.FIELDCENTRIC);
+    		Robot.driveTrain.setDrivingOreintation(DriveBase.NORMALDRIVE);
     	}
     }
     

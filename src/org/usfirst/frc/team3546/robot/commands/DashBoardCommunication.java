@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3546.robot.commands;
 
 import org.usfirst.frc.team3546.robot.Robot;
+import org.usfirst.frc.team3546.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -24,6 +25,7 @@ public class DashBoardCommunication extends Command {
 //    	System.out.println("Sending dashboard data" + new java.util.Date());
     	
     	SmartDashboard.putBoolean("DriveOreintation", Robot.driveTrain.getDrivingOreintation());
+    	SmartDashboard.putBoolean("Driving centricity", Robot.driveTrain.getCentricity());
     	for (int i=0; i < 4; i++){ //Iterates over the motor outputs
     		SmartDashboard.putNumber("DriveMotor" + i, 
     				Robot.driveTrain.getMotorOutputs()[i]);
@@ -39,6 +41,21 @@ public class DashBoardCommunication extends Command {
     	
     	SmartDashboard.putNumber("Gyro", Robot.driveTrain.getRobotAngle());
     	SmartDashboard.putData("PDP", Robot.PD.getPDPSendable());
+    	
+    	//Arm
+    	SmartDashboard.putNumber("Arm Output", Robot.armSystem.getArmWinchMotor());
+    	SmartDashboard.putNumber("Carriage Output", Robot.armSystem.getCarriageMotor());
+    	SmartDashboard.putBoolean("Carriage Forward Limit", Robot.armSystem.getCarriageForwardSwitch());
+    	SmartDashboard.putBoolean("Carriage Back Limit", Robot.armSystem.getCarriageBackwardSwitch());
+    	SmartDashboard.putBoolean("Arm Limit", Robot.armSystem.getArmUpperSwitch());
+    	SmartDashboard.putBoolean("Wrist Cylinder", Robot.armSystem.getWristCylinderPosition() == Arm.WRIST_UP);
+    	SmartDashboard.putBoolean("Claw Cylinder", Robot.armSystem.getClawCylinderPosition() == Arm.CLAW_CHOMP);
+    	
+    	//Tote Lift
+    	SmartDashboard.putNumber("Tote Lift Output", Robot.toteLiftSystem.getToteLiftMotor());
+    	SmartDashboard.putBoolean("LowerToteLimitSwitch", Robot.toteLiftSystem.getLowerSwitch());
+    	SmartDashboard.putBoolean("UpperToteLimitSwitch", Robot.toteLiftSystem.getUpperSwitch());
+
     }
 
     // Make this return true when this Command no longer needs to run execute()

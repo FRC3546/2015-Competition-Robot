@@ -4,6 +4,7 @@ import org.usfirst.frc.team3546.robot.RobotMap;
 import org.usfirst.frc.team3546.robot.commands.UpdateArmSubsystem;
 
 import edu.wpi.first.wpilibj.CANTalon;
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Jaguar;
@@ -21,20 +22,29 @@ public class Arm extends Subsystem {
 	public static final Value CLAW_CHOMP = Value.kForward;
 	public static final Value CLAW_RELEASE = Value.kReverse; 
 	
-	public static final double CARRIAGE_FORWARD = 0.25;
-	public static final double CARRIAGE_BACKWARD = -0.25; 
+	public static final double CARRIAGE_FORWARD = 0.75;
+	public static final double CARRIAGE_BACKWARD = -0.75; 
+	
+	public static final double armJoystickMultiplier = 0.75;
 	
 	private CANTalon armWinchMotor;
 	private Jaguar carriageMotor;
 	private DoubleSolenoid wristCylinder;
 	private DoubleSolenoid clawCylinder;
-
+	private DigitalInput carriageForwardLimitSwitch;
+	private DigitalInput carriageBackLimitSwitch;
+	private DigitalInput armLimitSwitch;
+	
     public void initDefaultCommand() {
     	armWinchMotor = new CANTalon(RobotMap.armWinchMotorDeviceID);
     	carriageMotor = new Jaguar(RobotMap.carriageMotorPWM);
-    	setArmWinchMotor(0);
-    	setCarriageMotor(0); //SAFE-T FIRST
-    	 
+    	stopArmWinchMotor();
+    	stopCarriageMotor(); //SAFE-T FIRST
+    	
+    	carriageForwardLimitSwitch = new DigitalInput(RobotMap.carriageForwardLimitSwitchPort);
+    	carriageBackLimitSwitch = new DigitalInput(RobotMap.carriageRearLimitSwitchPort);
+    	armLimitSwitch = new DigitalInput(RobotMap.armUpperLimitSwitchPort);
+    	
     	wristCylinder = new DoubleSolenoid(RobotMap.wristCylinderPCMPort1, RobotMap.wristCylinderPCMPort2);
     	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
     	setClawCylinder(CLAW_RELEASE);
@@ -44,11 +54,29 @@ public class Arm extends Subsystem {
     }
     
     public void setArmWinchMotor(double output){
-    	armWinchMotor.set(output);
+    	if (output > 0){
+			armWinchMotor.set(output);
+    	} else if (output < 0){
+    		if (!getArmUpperSwitch()){
+    			armWinchMotor.set(output);
+    		} else {
+    			stopArmWinchMotor();
+    		}
+    	} else if (output == 0){
+    		armWinchMotor.set(output);
+    	}
+    }
+    
+    public double getArmWinchMotor(){
+    	return armWinchMotor.get();
     }
     
     public void setCarriageMotor(double output){
-    	carriageMotor.set(output);
+    	carriageMotor.set(-output);
+    }
+    
+    public double getCarriageMotor(){
+    	return carriageMotor.get();
     }
     
     public void setWristCylinder(Value newPosition){
@@ -57,6 +85,18 @@ public class Arm extends Subsystem {
     
     public void setClawCylinder(Value newPosition){
     	clawCylinder.set(newPosition);
+    }
+    
+    public boolean getCarriageForwardSwitch(){
+    	return !carriageForwardLimitSwitch.get();
+    }
+    
+    public boolean getCarriageBackwardSwitch(){
+    	return !carriageBackLimitSwitch.get();
+    }
+    
+    public boolean getArmUpperSwitch(){
+    	return !armLimitSwitch.get();
     }
     
     public Value getWristCylinderPosition(){

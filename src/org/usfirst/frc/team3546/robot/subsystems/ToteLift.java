@@ -12,8 +12,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * Contains all of the hardware for the tote lift
  */
 public class ToteLift extends Subsystem {
-	public static final double TOTELIFTUP = 0.25;
-	public static final double TOTELIFTDOWN = -0.25; 
+	public static final double TOTELIFTUP = 0.5;
+	public static final double TOTELIFTDOWN = -0.5; 
     
 	//Poteniometer/Limit Switches may be added later
 	private VictorSP toteLiftMotor;
@@ -27,11 +27,11 @@ public class ToteLift extends Subsystem {
     }
     
     public boolean getLowerSwitch(){
-    	return lowerLimitSwitch.get();
+    	return !lowerLimitSwitch.get();
     }
     
     public boolean getUpperSwitch(){
-    	return upperLimitSwitch.get();
+    	return !upperLimitSwitch.get();
     }
     
     public void setToteLiftMotor(double output) {
@@ -50,6 +50,10 @@ public class ToteLift extends Subsystem {
     	} else if (output == 0){
     		toteLiftMotor.set(output);
     	}
+    }
+    
+    public double getToteLiftMotor(){
+		return toteLiftMotor.get();
     }
     
     public void stopToteLiftMotor(){
