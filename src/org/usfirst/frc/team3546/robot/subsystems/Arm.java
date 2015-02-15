@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3546.robot.subsystems;
 
+import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.RobotMap;
 import org.usfirst.frc.team3546.robot.commands.UpdateArmSubsystem;
 
@@ -9,14 +10,17 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Jaguar;
+import edu.wpi.first.wpilibj.Sendable;
 import edu.wpi.first.wpilibj.Solenoid;
+import edu.wpi.first.wpilibj.command.PIDSubsystem;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * Contains all of the hardware on the arm, including the carriage,
  * arm, and hand 
  */
-public class Arm extends Subsystem {
+public class Arm extends PIDSubsystem {
 	public static final Value WRIST_DOWN = Value.kReverse;
 	public static final Value WRIST_UP = Value.kForward;
 	
@@ -28,6 +32,18 @@ public class Arm extends Subsystem {
 	
 	public static final double armJoystickMultiplier = 0.75;
 	
+	//PID Values
+	public static final double armPID_PVal = 0.0028 * 0.8;
+	public static final double armPID_IVal = 0;//0.0625 * 0.5 * .5;
+	public static final double armPID_DVal = 0.0;
+	
+	//PID Setpoint
+	public static final double ARM_MAX_HEIGHT_SETPOINT = 0;
+	public static final double STEP_LEVEL_SETPOINT = 1700;
+	public static final double CAN_LEVEL_SETPOINT = 1500;// 2124;
+	
+	public static final double PIDTerminationTolerence = 150;
+	
 	private CANTalon armWinchMotor;
 	private Jaguar carriageMotor;
 	private DoubleSolenoid wristCylinder;
@@ -36,6 +52,13 @@ public class Arm extends Subsystem {
 	private DigitalInput carriageBackLimitSwitch;
 	private DigitalInput armLimitSwitch;
 	private Encoder armEncoder;
+	
+	public Arm(){
+		super("Arm", armPID_PVal, armPID_IVal, armPID_DVal);
+		setAbsoluteTolerance(PIDTerminationTolerence);
+		getPIDController().setContinuous(true);
+		LiveWindow.addActuator("PIDIDI", "Tunner", getPIDController());
+	}
 	
     public void initDefaultCommand() {
     	armWinchMotor = new CANTalon(RobotMap.armWinchMotorDeviceID);
@@ -139,6 +162,25 @@ public class Arm extends Subsystem {
     	}
     }
     
+    public boolean isPIDRunning() {
+    	if (getPIDController().isEnable())
+    		return !getPIDController().onTarget();
+    	else
+    		return false;
+    }
+    
+    public double returnPIDInput(){
+    	return getArmEncoder();
+    }
+    
+    public void usePIDOutput(double output){
+    	setArmWinchMotor(output * .5);
+    }
+    
+    public Sendable getPIDSendable(){
+    	return getPIDController();
+    }
+    
     public void stopArmWinchMotor(){
     	armWinchMotor.set(0);
     }
@@ -146,5 +188,6 @@ public class Arm extends Subsystem {
     public void stopCarriageMotor(){
     	carriageMotor.set(0);
     }
+    
 }
 

@@ -20,9 +20,14 @@ public class UpdateArmSubsystem extends Command {
     protected void execute() {
     	double armWinchPower = -Robot.oi.coDriverJoystick.getAxis(OI.armOperationAxis) * Arm.armJoystickMultiplier;
     	int dPadValue = Robot.oi.coDriverJoystick.getPOV(OI.miniJoystickPOV);
-
     	
+    	if (Math.abs(armWinchPower) > OI.armStickDeadzone){
+    		Robot.armSystem.getPIDController().disable();
     		Robot.armSystem.setArmWinchMotor(armWinchPower);
+    	} else if (!Robot.armSystem.isPIDRunning()) {
+    		Robot.armSystem.stopArmWinchMotor();
+    	}
+    	
     	if (Robot.oi.coDriverJoystick.getPOVCount() != 0){
 	    	if (dPadValue == 315 || dPadValue == 0 || dPadValue == 45){ //Dpad is pressed up
 	    		if (!toteMovementCommand.isRunning()){ //Command not running
@@ -40,6 +45,9 @@ public class UpdateArmSubsystem extends Command {
     	} else {
     		toteMovementCommand.cancel();
     	}
+	    	
+    	if (Robot.armSystem.getArmUpperSwitch()){
+    		Robot.armSystem.resetArmEncoder();
     	}
     }
 
