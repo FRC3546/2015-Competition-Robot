@@ -34,7 +34,7 @@ public class DriveBase extends Subsystem {
     public void initDefaultCommand() {
         setDefaultCommand(new MecanumDrive());
         drivingOreintation = NORMALDRIVE;
-        drivingCentricity = ROBOTCENTRIC;
+        drivingCentricity = FIELDCENTRIC;
         
         frontLeft = new Victor(RobotMap.frontLeftMotorPWM);
 		frontRight = new Victor(RobotMap.frontRightMotorPWM);

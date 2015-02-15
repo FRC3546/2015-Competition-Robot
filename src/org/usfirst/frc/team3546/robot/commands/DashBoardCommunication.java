@@ -50,6 +50,9 @@ public class DashBoardCommunication extends Command {
     	SmartDashboard.putBoolean("Arm Limit", Robot.armSystem.getArmUpperSwitch());
     	SmartDashboard.putBoolean("Wrist Cylinder", Robot.armSystem.getWristCylinderPosition() == Arm.WRIST_UP);
     	SmartDashboard.putBoolean("Claw Cylinder", Robot.armSystem.getClawCylinderPosition() == Arm.CLAW_CHOMP);
+    	SmartDashboard.putNumber("Arm Encoder", Robot.armSystem.getArmEncoder());
+    	SmartDashboard.putBoolean("PID Running?", Robot.armSystem.isPIDRunning());
+    	SmartDashboard.putData("PID Controller", Robot.armSystem.getPIDSendable());
     	
     	//Tote Lift
     	SmartDashboard.putNumber("Tote Lift Output", Robot.toteLiftSystem.getToteLiftMotor());

@@ -18,7 +18,9 @@ public class ToggleDriveOrientation extends Command {
     protected void initialize() {
     	boolean currentDrivingOreintation = Robot.driveTrain.getDrivingOreintation();
     	if (currentDrivingOreintation == DriveBase.NORMALDRIVE){
-    		Robot.driveTrain.setDrivingOreintation(DriveBase.REVERSEDDRIVE);
+    		if (Robot.driveTrain.getCentricity() == DriveBase.ROBOTCENTRIC) {
+    			Robot.driveTrain.setDrivingOreintation(DriveBase.REVERSEDDRIVE);
+    		}
     	} else if (currentDrivingOreintation == DriveBase.REVERSEDDRIVE) {
     		Robot.driveTrain.setDrivingOreintation(DriveBase.NORMALDRIVE);
     	}
