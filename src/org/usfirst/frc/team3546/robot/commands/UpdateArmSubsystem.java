@@ -18,10 +18,9 @@ public class UpdateArmSubsystem extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double armWinchPower = Robot.oi.coDriverJoystick.getAxis(OI.armOperationAxis);
+    	double armWinchPower = -Robot.oi.coDriverJoystick.getAxis(OI.armOperationAxis) * Arm.armJoystickMultiplier;
     	int dPadValue = Robot.oi.coDriverJoystick.getPOV(OI.miniJoystickPOV);
 
-    	Robot.armSystem.setArmWinchMotor(-armWinchPower * Arm.armJoystickMultiplier);
     	
     	if (dPadValue == 315 || dPadValue == 0 || dPadValue == 45){ //Dpad is pressed up
     		if (!toteMovementCommand.isRunning()){ //Command not running
@@ -33,6 +32,7 @@ public class UpdateArmSubsystem extends Command {
 	    		toteMovementCommand = new MoveToteLiftDown();
 	    		toteMovementCommand.start();
     		}
+    		Robot.armSystem.setArmWinchMotor(armWinchPower);
     	} else {
 			toteMovementCommand.cancel();
     	}
