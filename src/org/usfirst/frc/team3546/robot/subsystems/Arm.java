@@ -6,6 +6,7 @@ import org.usfirst.frc.team3546.robot.commands.UpdateArmSubsystem;
 import edu.wpi.first.wpilibj.CANTalon;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.Solenoid;
@@ -34,6 +35,7 @@ public class Arm extends Subsystem {
 	private DigitalInput carriageForwardLimitSwitch;
 	private DigitalInput carriageBackLimitSwitch;
 	private DigitalInput armLimitSwitch;
+	private Encoder armEncoder;
 	
     public void initDefaultCommand() {
     	armWinchMotor = new CANTalon(RobotMap.armWinchMotorDeviceID);
@@ -49,6 +51,9 @@ public class Arm extends Subsystem {
     	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
     	setClawCylinder(CLAW_CHOMP);
     	setWristCylinder(WRIST_UP);
+    	 
+    	armEncoder = new Encoder(RobotMap.armEncoderPort1, RobotMap.armEncoderPort2, false, Encoder.EncodingType.k4X);
+		armEncoder.reset();
     	
     	setDefaultCommand(new UpdateArmSubsystem());
     }
@@ -106,6 +111,15 @@ public class Arm extends Subsystem {
     public Value getClawCylinderPosition(){
     	return clawCylinder.get();
     }
+    
+    public double getArmEncoder(){
+    	return armEncoder.get();
+    }
+    
+    public void resetArmEncoder(){
+    	armEncoder.reset();
+    }
+    
     
     public void toggleClawCylinder(){
     	Value clawCylinderPosition = getClawCylinderPosition();

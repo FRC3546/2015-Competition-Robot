@@ -35,4 +35,6 @@ public class RobotMap {
     public static final int carriageRearLimitSwitchPort = 2;
     public static final int carriageForwardLimitSwitchPort = 3;
     public static final int armUpperLimitSwitchPort = 4;
+    public static final int armEncoderPort1 = 5;
+    public static final int armEncoderPort2 = 6;
 }
