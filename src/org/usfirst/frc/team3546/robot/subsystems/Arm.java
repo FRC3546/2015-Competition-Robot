@@ -16,8 +16,8 @@ import edu.wpi.first.wpilibj.command.Subsystem;
  * arm, and hand 
  */
 public class Arm extends Subsystem {
-	public static final Value WRIST_DOWN = Value.kForward;
-	public static final Value WRIST_UP = Value.kReverse;
+	public static final Value WRIST_DOWN = Value.kReverse;
+	public static final Value WRIST_UP = Value.kForward;
 	
 	public static final Value CLAW_CHOMP = Value.kForward;
 	public static final Value CLAW_RELEASE = Value.kReverse; 
@@ -47,7 +47,7 @@ public class Arm extends Subsystem {
     	
     	wristCylinder = new DoubleSolenoid(RobotMap.wristCylinderPCMPort1, RobotMap.wristCylinderPCMPort2);
     	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
-    	setClawCylinder(CLAW_RELEASE);
+    	setClawCylinder(CLAW_CHOMP);
     	setWristCylinder(WRIST_UP);
     	
     	setDefaultCommand(new UpdateArmSubsystem());
