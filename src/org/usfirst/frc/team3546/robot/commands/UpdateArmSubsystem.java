@@ -22,19 +22,24 @@ public class UpdateArmSubsystem extends Command {
     	int dPadValue = Robot.oi.coDriverJoystick.getPOV(OI.miniJoystickPOV);
 
     	
-    	if (dPadValue == 315 || dPadValue == 0 || dPadValue == 45){ //Dpad is pressed up
-    		if (!toteMovementCommand.isRunning()){ //Command not running
-	    		toteMovementCommand = new MoveToteLiftUp();
-	    		toteMovementCommand.start();
-    		}
-    	} else if (dPadValue == 135 || dPadValue == 180 || dPadValue == 225){ //Dpad is pressed down
-    		if (!toteMovementCommand.isRunning()){ //Command not running
-	    		toteMovementCommand = new MoveToteLiftDown();
-	    		toteMovementCommand.start();
-    		}
     		Robot.armSystem.setArmWinchMotor(armWinchPower);
+    	if (Robot.oi.coDriverJoystick.getPOVCount() != 0){
+	    	if (dPadValue == 315 || dPadValue == 0 || dPadValue == 45){ //Dpad is pressed up
+	    		if (!toteMovementCommand.isRunning()){ //Command not running
+		    		toteMovementCommand = new MoveToteLiftUp();
+		    		toteMovementCommand.start();
+	    		}
+	    	} else if (dPadValue == 135 || dPadValue == 180 || dPadValue == 225){ //Dpad is pressed down
+	    		if (!toteMovementCommand.isRunning()){ //Command not running
+		    		toteMovementCommand = new MoveToteLiftDown();
+		    		toteMovementCommand.start();
+	    		}
+	    	} else {
+				toteMovementCommand.cancel();
+	    	}
     	} else {
-			toteMovementCommand.cancel();
+    		toteMovementCommand.cancel();
+    	}
     	}
     }
 
