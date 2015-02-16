@@ -3,15 +3,19 @@ package org.usfirst.frc.team3546.robot.commands;
 import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
 public class SetArmToMaxLevel extends Command {
+	Timer commandTimer;
+	
     public SetArmToMaxLevel() {
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    	commandTimer = new Timer();
+    	commandTimer.start();
+    	commandTimer.reset();
     }
 
     // Called just before this Command runs the first time
@@ -19,6 +23,12 @@ public class SetArmToMaxLevel extends Command {
     	Robot.armSystem.getPIDController().enable();
     	Robot.armSystem.setSetpoint(Arm.ARM_MAX_HEIGHT_SETPOINT);
     }
+    
+    protected void execute() {
+		if (commandTimer.get() > Arm.PID_TIMEOUT) {
+			Robot.armSystem.getPIDController().disable();
+		}
+	}
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
@@ -39,6 +49,5 @@ public class SetArmToMaxLevel extends Command {
     //These are here only to please the compiler...
     //If they have content in them, they should be moved to above
 	protected void end() {}
-	protected void execute() {}
 	protected void interrupted() {	}
 }

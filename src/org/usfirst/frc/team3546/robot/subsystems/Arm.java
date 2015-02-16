@@ -44,6 +44,8 @@ public class Arm extends PIDSubsystem {
 	public static final double STEP_LEVEL_SETPOINT = 1700;
 	public static final double CAN_LEVEL_SETPOINT = 1500;// 2124;
 	
+	public static final double PID_TIMEOUT = 5; //Seconds
+	
 	public static final double PIDTerminationTolerence = 150;
 	
 	private CANTalon armWinchMotor;
