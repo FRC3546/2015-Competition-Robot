@@ -11,24 +11,28 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SetArmToCanLevel extends Command {
 	Timer commandTimer;
+	double initialTime;
 	
     public SetArmToCanLevel() {
     	commandTimer = new Timer();
     	commandTimer.start();
     	commandTimer.reset();
+    	
+    	
     }
-    
-    protected void execute() {
-		if (commandTimer.get() > Arm.PID_TIMEOUT) {
-			Robot.armSystem.getPIDController().disable();
-		}
-	}
-
-    // Called just before this Command runs the first time
+     // Called just before this Command runs the first time
     protected void initialize() {
     	Robot.armSystem.getPIDController().enable();
     	Robot.armSystem.setSetpoint(Arm.CAN_LEVEL_SETPOINT);
+    	initialTime = commandTimer.get();
     }
+    
+    protected void execute() {
+		if (commandTimer.get() - initialTime > Arm.PID_TIMEOUT) {
+			Robot.armSystem.getPIDController().disable();
+		}
+	}
+   
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

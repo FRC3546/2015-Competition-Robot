@@ -35,16 +35,16 @@ public class Arm extends PIDSubsystem {
 	public static final double armSlowUpValue = -0.3;
 	
 	//PID Values
-	public static final double armPID_PVal = 0.0028 * 0.8;
+	public static final double armPID_PVal = 0.01;
 	public static final double armPID_IVal = 0;//0.0625 * 0.5 * .5;
 	public static final double armPID_DVal = 0.0;
 	
 	//PID Setpoint
 	public static final double ARM_MAX_HEIGHT_SETPOINT = 0;
 	public static final double STEP_LEVEL_SETPOINT = 1700;
-	public static final double CAN_LEVEL_SETPOINT = 1500;// 2124;
+	public static final double CAN_LEVEL_SETPOINT = 2124;
 	
-	public static final double PID_TIMEOUT = 5; //Seconds
+	public static final double PID_TIMEOUT = 4; //Seconds
 	
 	public static final double PIDTerminationTolerence = 150;
 	

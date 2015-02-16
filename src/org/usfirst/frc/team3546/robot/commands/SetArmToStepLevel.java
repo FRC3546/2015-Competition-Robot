@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class SetArmToStepLevel extends Command {
 	Timer commandTimer;
+	double initialTime;
 	
     public SetArmToStepLevel() {
     	commandTimer = new Timer();
@@ -22,10 +23,11 @@ public class SetArmToStepLevel extends Command {
     protected void initialize() {
     	Robot.armSystem.getPIDController().enable();
     	Robot.armSystem.setSetpoint(Arm.STEP_LEVEL_SETPOINT);
+    	initialTime = commandTimer.get();
     }
     
     protected void execute() {
-		if (commandTimer.get() > Arm.PID_TIMEOUT) {
+		if (commandTimer.get() - initialTime > Arm.PID_TIMEOUT) {
 			Robot.armSystem.getPIDController().disable();
 		}
 	}
