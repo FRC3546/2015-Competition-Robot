@@ -32,6 +32,8 @@ public class Arm extends PIDSubsystem {
 	
 	public static final double armJoystickMultiplier = 0.75;
 	
+	public static final double armSlowUpValue = -0.3;
+	
 	//PID Values
 	public static final double armPID_PVal = 0.0028 * 0.8;
 	public static final double armPID_IVal = 0;//0.0625 * 0.5 * .5;

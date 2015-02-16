@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class UpdateArmSubsystem extends Command {
-		private Command toteMovementCommand = new MoveToteLiftDown(); //Always overwritten
+	private Command toteMovementCommand = new MoveToteLiftDown(); //Always overwritten
 
     public UpdateArmSubsystem() {
     	requires(Robot.armSystem);

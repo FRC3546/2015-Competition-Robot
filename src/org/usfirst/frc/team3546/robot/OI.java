@@ -5,6 +5,9 @@ import org.usfirst.frc.team3546.robot.commands.MoveCarriageForward;
 import org.usfirst.frc.team3546.robot.commands.MoveToteLiftDown;
 import org.usfirst.frc.team3546.robot.commands.MoveToteLiftUp;
 import org.usfirst.frc.team3546.robot.commands.ResetGyro;
+import org.usfirst.frc.team3546.robot.commands.SetArmToCanLevel;
+import org.usfirst.frc.team3546.robot.commands.SetArmToMaxLevel;
+import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
 import org.usfirst.frc.team3546.robot.commands.ToggleClawCylinder;
 import org.usfirst.frc.team3546.robot.commands.ToggleDriveOrientation;
 import org.usfirst.frc.team3546.robot.commands.ToggleDrivingCentricity;
@@ -45,6 +48,12 @@ public class OI {
 	public Button moveCarriageBackwardButton;
 	public Button toggleWristCylinderButton;
 	public Button toggleClawCylinderButton;
+	public Button moveArmToCanLevelButton;
+	public Button moveArmToStepLevelButton;
+	public Button moveArmToMaxHeightButton;
+	
+	//DeadZones
+	public static final double armStickDeadzone = 0.05;
 	
 	public OI(){
 		drivingJoystick = new Joystick(0);
@@ -70,6 +79,12 @@ public class OI {
 		
 		moveCarriageBackwardButton = new JoystickButton(coDriverJoystick, 6);
 		moveCarriageBackwardButton.whileHeld(new MoveCarriageBack());
+		
+		moveArmToCanLevelButton = new JoystickButton(coDriverJoystick, 5);
+		moveArmToCanLevelButton.whenPressed(new SetArmToCanLevel());
+		
+		moveArmToMaxHeightButton = new JoystickButton(coDriverJoystick, 3);
+		moveArmToMaxHeightButton.whenPressed(new SetArmToMaxLevel());
 	}
 	
 	public double[] getJoysickAxisData(){
