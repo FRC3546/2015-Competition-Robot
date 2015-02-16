@@ -21,6 +21,6 @@ public class GrabContainerFromStep extends CommandGroup {
         //We need to lift it just a tad
         //TODO Lift container slightly
         //Now we just need to drive into the AUTOZONE!
-        addSequential(new ShortRangeDriveForward());
+        //addSequential(new ShortRangeDriveBackward());
     }
 }
