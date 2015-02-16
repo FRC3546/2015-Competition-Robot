@@ -82,6 +82,16 @@ public class DriveBase extends Subsystem {
     		robotAngle = 0; //Processed as if there's no gyro
     	}
     	
+    	takeManualInput(
+    			horizontalDriveInput, 
+    			verticalDriveInput,  
+    			rotationalDriveInput, 
+    			robotAngle
+    			);
+    }
+    
+    public void takeManualInput(double horizontalDriveInput, 
+    		double verticalDriveInput, double rotationalDriveInput, double robotAngle){
     	mainDrive.mecanumDrive_Cartesian(
     			horizontalDriveInput, 
     			verticalDriveInput,  
