@@ -24,7 +24,7 @@ public class UpdateArmSubsystem extends Command {
     	if (Math.abs(armWinchPower) > OI.armStickDeadzone){
     		Robot.armSystem.getPIDController().disable();
     		Robot.armSystem.setArmWinchMotor(armWinchPower);
-    	} else if (!Robot.armSystem.isPIDRunning()) {
+    	} else if (!Robot.armSystem.isPIDRunning() && !Robot.armSystem.getIsFinishingArmUpCommand()) {
     		Robot.armSystem.stopArmWinchMotor();
     	}
     	

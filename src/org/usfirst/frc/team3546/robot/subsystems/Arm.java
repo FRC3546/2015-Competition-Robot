@@ -32,7 +32,7 @@ public class Arm extends PIDSubsystem {
 	
 	public static final double armJoystickMultiplier = 0.75;
 	
-	public static final double armSlowUpValue = -0.3;
+	public static final double armSlowUpValue = -0.4;
 	
 	//PID Values
 	public static final double armPID_PVal = 0.01;
@@ -42,11 +42,11 @@ public class Arm extends PIDSubsystem {
 	//PID Setpoint
 	public static final double ARM_MAX_HEIGHT_SETPOINT = 0;
 	public static final double STEP_LEVEL_SETPOINT = 1700;
-	public static final double CAN_LEVEL_SETPOINT = 2124;
+	public static final double CAN_LEVEL_SETPOINT = 2250;
 	
-	public static final double PID_TIMEOUT = 4; //Seconds
+	public static final double PID_TIMEOUT = 7; //Seconds
 	
-	public static final double PIDTerminationTolerence = 150;
+	public static final double PIDTerminationTolerence = 50;
 	
 	private CANTalon armWinchMotor;
 	private Jaguar carriageMotor;
@@ -56,6 +56,8 @@ public class Arm extends PIDSubsystem {
 	private DigitalInput carriageBackLimitSwitch;
 	private DigitalInput armLimitSwitch;
 	private Encoder armEncoder;
+	
+	private boolean isFinishingArmUpCommand = false;
 	
 	public Arm(){
 		super("Arm", armPID_PVal, armPID_IVal, armPID_DVal);
@@ -147,6 +149,13 @@ public class Arm extends PIDSubsystem {
     	armEncoder.reset();
     }
     
+    public void setIsFinishingArmUpCommand(boolean is){
+    	isFinishingArmUpCommand = is;
+    }
+    
+    public boolean getIsFinishingArmUpCommand(){
+    	return isFinishingArmUpCommand;
+    }
     
     public void toggleClawCylinder(){
     	Value clawCylinderPosition = getClawCylinderPosition();
@@ -178,7 +187,9 @@ public class Arm extends PIDSubsystem {
     }
     
     public void usePIDOutput(double output){
-    	setArmWinchMotor(output * .5);
+    	if (isPIDRunning()){    	
+    		setArmWinchMotor(output * .5);
+    	}
     }
     
     public Sendable getPIDSendable(){
