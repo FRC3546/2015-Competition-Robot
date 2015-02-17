@@ -11,6 +11,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SetupToGrabFromTheStep extends CommandGroup {
     
     public  SetupToGrabFromTheStep() {
+    	addParallel(new VeryShortRangeDriveForward()); //Drive in to the landfill zone
     	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
     	addParallel(new SetWristCylinderHorizontal());
     	addParallel(new MoveCarriageToFront());
