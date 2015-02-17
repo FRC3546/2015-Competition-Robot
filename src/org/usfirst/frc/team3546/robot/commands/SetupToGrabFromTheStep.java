@@ -11,8 +11,8 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SetupToGrabFromTheStep extends CommandGroup {
     
     public  SetupToGrabFromTheStep() {
-    	//The wrist is automatically set to horizontal by the initialization routine
-    	addParallel(new ToggleClawCylinder()); //Sets the claw to open
+    	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
+    	addParallel(new SetWristCylinderHorizontal());
     	addParallel(new MoveCarriageToFront());
     	addSequential(new SetArmToStepLevel());
     	//At this point, we should have our claw around the recycling container
