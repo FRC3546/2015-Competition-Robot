@@ -60,11 +60,19 @@ public class Arm extends PIDSubsystem {
 	
 	private boolean isFinishingArmUpCommand = false;
 	
-	public Arm(){
+	public Arm(boolean intializeCylinders){
 		super("Arm", armPID_PVal, armPID_IVal, armPID_DVal);
 		setAbsoluteTolerance(PIDTerminationTolerence);
 		getPIDController().setContinuous(true);
 		LiveWindow.addActuator("PIDIDI", "Tunner", getPIDController());
+		
+		wristCylinder = new DoubleSolenoid(RobotMap.wristCylinderPCMPort1, RobotMap.wristCylinderPCMPort2);
+    	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
+    	
+    	if (intializeCylinders){
+        	setClawCylinder(CLAW_CHOMP);
+        	setWristCylinder(WRIST_UP);
+    	}
 	}
 	
     public void initDefaultCommand() {
@@ -76,12 +84,6 @@ public class Arm extends PIDSubsystem {
     	carriageForwardLimitSwitch = new DigitalInput(RobotMap.carriageForwardLimitSwitchPort);
     	carriageBackLimitSwitch = new DigitalInput(RobotMap.carriageRearLimitSwitchPort);
     	armLimitSwitch = new DigitalInput(RobotMap.armUpperLimitSwitchPort);
-    	
-    	wristCylinder = new DoubleSolenoid(RobotMap.wristCylinderPCMPort1, RobotMap.wristCylinderPCMPort2);
-    	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
-    	
-    	setClawCylinder(CLAW_CHOMP);
-    	setWristCylinder(WRIST_UP);
 
     	armEncoder = new Encoder(RobotMap.armEncoderPort1, RobotMap.armEncoderPort2, false, Encoder.EncodingType.k4X);
 		armEncoder.reset();

@@ -29,7 +29,7 @@ import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
 public class Robot extends IterativeRobot {
 
 	public static final ToteLift toteLiftSystem = new ToteLift();
-	public static final Arm armSystem = new Arm();
+	public static Arm armSystem;
 	public static final DriveBase driveTrain = new DriveBase();
 	public static final PowerDistribution PD = new PowerDistribution();
 	public static OI oi;
@@ -44,6 +44,8 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
     	System.out.println("Robot intializing");
     	oi = new OI();
+    	
+    	armSystem = new Arm(!this.isAutonomous());
 		
 		//Start communication with the SmartDashboard
 		DashBoardCommunication dash = new DashBoardCommunication();
