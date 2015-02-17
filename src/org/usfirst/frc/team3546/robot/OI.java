@@ -2,12 +2,9 @@ package org.usfirst.frc.team3546.robot;
 
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageBack;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageForward;
-import org.usfirst.frc.team3546.robot.commands.MoveToteLiftDown;
-import org.usfirst.frc.team3546.robot.commands.MoveToteLiftUp;
 import org.usfirst.frc.team3546.robot.commands.ResetGyro;
 import org.usfirst.frc.team3546.robot.commands.SetArmToCanLevel;
 import org.usfirst.frc.team3546.robot.commands.SetArmToMaxLevel;
-import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
 import org.usfirst.frc.team3546.robot.commands.ToggleClawCylinder;
 import org.usfirst.frc.team3546.robot.commands.ToggleDriveOrientation;
 import org.usfirst.frc.team3546.robot.commands.ToggleDrivingCentricity;

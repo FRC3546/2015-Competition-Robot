@@ -1,13 +1,8 @@
 package org.usfirst.frc.team3546.robot.commands.autonomous;
 
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
-import org.usfirst.frc.team3546.robot.commands.MoveArmUpATad;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfwayBack;
-import org.usfirst.frc.team3546.robot.commands.MoveCarriageToBack;
-import org.usfirst.frc.team3546.robot.commands.SetupToGrabFromTheStep;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
-import org.usfirst.frc.team3546.robot.commands.ToggleClawCylinder;
-import org.usfirst.frc.team3546.robot.commands.WaitObservationPeriod;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 

@@ -30,10 +30,6 @@ public class MoveToteLiftDown extends Command {
     	Robot.toteLiftSystem.stopToteLiftMotor();
     }
     
-    public void run(){
-    	
-    }
-    
   //These are here only to please the compiler...
     //If they have content in them, they should be moved to above
     protected void initialize() {}

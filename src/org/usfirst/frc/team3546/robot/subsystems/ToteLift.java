@@ -1,7 +1,6 @@
 
 package org.usfirst.frc.team3546.robot.subsystems;
 
-import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;

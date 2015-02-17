@@ -1,6 +1,5 @@
 package org.usfirst.frc.team3546.robot.commands.autonomous;
 
-import org.usfirst.frc.team3546.robot.commands.DriveRight;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
 import org.usfirst.frc.team3546.robot.commands.MoveArmUpATad;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfWayForward;

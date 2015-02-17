@@ -1,23 +1,21 @@
 
 package org.usfirst.frc.team3546.robot;
 
-import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.command.Scheduler;
-import edu.wpi.first.wpilibj.livewindow.LiveWindow;
-import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-
 import org.usfirst.frc.team3546.robot.commands.DashBoardCommunication;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
-import org.usfirst.frc.team3546.robot.commands.MoveCarriageToBack;
-import org.usfirst.frc.team3546.robot.commands.MoveCarriageToFront;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBack;
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
 import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
 import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
+
+import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * The VM is configured to automatically run this class, and to call the

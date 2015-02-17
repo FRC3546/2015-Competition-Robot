@@ -2,8 +2,6 @@ package org.usfirst.frc.team3546.robot.commands;
 
 import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
-import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
-
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
