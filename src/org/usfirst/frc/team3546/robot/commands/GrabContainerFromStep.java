@@ -1,8 +1,4 @@
-package org.usfirst.frc.team3546.robot.commands.autonomous;
-
-import org.usfirst.frc.team3546.robot.commands.SetupToGrabFromTheStep;
-import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveForward;
-import org.usfirst.frc.team3546.robot.commands.ToggleClawCylinder;
+package org.usfirst.frc.team3546.robot.commands;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -18,9 +14,8 @@ public class GrabContainerFromStep extends CommandGroup {
         addSequential(new SetupToGrabFromTheStep());
         //We should have our claw around a container now, let's grab it
         addSequential(new ToggleClawCylinder());
-        //We need to lift it just a tad
-        //TODO Lift container slightly
-        //Now we just need to drive into the AUTOZONE!
-        //addSequential(new ShortRangeDriveBackward());
+        addSequential(new WaitObservationPeriod());
+        addSequential(new MoveArmUpATad());
+        addParallel(new MoveCarriageHalfwayBack());
     }
 }
