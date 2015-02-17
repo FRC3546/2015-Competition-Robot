@@ -6,12 +6,11 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveCarriageToFront extends Command {
-	final double MOVE_FORWARD_TIME = 3.5;//2.9; //Seconds
-	MoveCarriageForward drivingCommand;
+public class WaitObservationPeriod extends Command {
+	final double OBSERVATION_TIME = 1.0;//Seconds
 	Timer commandTimer;
 	
-    public MoveCarriageToFront() {
+    public WaitObservationPeriod() {
     	
     }
 
@@ -20,14 +19,11 @@ public class MoveCarriageToFront extends Command {
     	commandTimer = new Timer();
     	commandTimer.start();
     	commandTimer.reset();
-    	
-    	drivingCommand = new MoveCarriageForward();
-    	drivingCommand.start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (commandTimer.get() > MOVE_FORWARD_TIME) {
+    	if (commandTimer.get() > OBSERVATION_TIME) {
     		return true;
     	}
         return false;
@@ -35,7 +31,6 @@ public class MoveCarriageToFront extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
-    	drivingCommand.cancel();
     }
 
     // Called when another command which requires one or more of the same

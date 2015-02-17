@@ -18,7 +18,7 @@ public class DriveForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.driveTrain.takeManualInput(0, .75, 0, 0);//Drive forward at 75% power
+    	Robot.driveTrain.takeManualInput(0, -.75, 0, 0);//Drive forward at 75% power
     }
 
     // Make this return true when this Command no longer needs to run execute()

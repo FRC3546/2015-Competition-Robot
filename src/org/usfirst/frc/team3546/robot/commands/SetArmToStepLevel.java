@@ -34,7 +34,11 @@ public class SetArmToStepLevel extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.armSystem.isPIDRunning();
+        if (!Robot.armSystem.isPIDRunning()){
+        	Robot.armSystem.getPIDController().disable();
+        	return true;
+        }
+        return false;
     }
 
 

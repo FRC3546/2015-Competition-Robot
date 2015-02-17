@@ -32,7 +32,8 @@ public class Arm extends PIDSubsystem {
 	
 	public static final double armJoystickMultiplier = 0.75;
 	
-	public static final double armSlowUpValue = -0.4;
+	public static final double armSlowUpValue = -0.5;
+	public static final double armFasterUpValue = -0.7;
 	
 	//PID Values
 	public static final double armPID_PVal = 0.01;
@@ -41,12 +42,12 @@ public class Arm extends PIDSubsystem {
 	
 	//PID Setpoint
 	public static final double ARM_MAX_HEIGHT_SETPOINT = 0;
-	public static final double STEP_LEVEL_SETPOINT = 1700;
+	public static final double STEP_LEVEL_SETPOINT = 1800;
 	public static final double CAN_LEVEL_SETPOINT = 2250;
 	
 	public static final double PID_TIMEOUT = 7; //Seconds
 	
-	public static final double PIDTerminationTolerence = 50;
+	public static final double PIDTerminationTolerence = 100;
 	
 	private CANTalon armWinchMotor;
 	private Jaguar carriageMotor;
@@ -78,9 +79,10 @@ public class Arm extends PIDSubsystem {
     	
     	wristCylinder = new DoubleSolenoid(RobotMap.wristCylinderPCMPort1, RobotMap.wristCylinderPCMPort2);
     	clawCylinder = new DoubleSolenoid(RobotMap.clawCylinderPCMPort1, RobotMap.clawCylinderPCMPort2);
+    	
     	setClawCylinder(CLAW_CHOMP);
     	setWristCylinder(WRIST_UP);
-    	 
+
     	armEncoder = new Encoder(RobotMap.armEncoderPort1, RobotMap.armEncoderPort2, false, Encoder.EncodingType.k4X);
 		armEncoder.reset();
     	

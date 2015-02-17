@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveCarriageToFront extends Command {
-	final double MOVE_FORWARD_TIME = 3.5;//2.9; //Seconds
-	MoveCarriageForward drivingCommand;
+public class DriveForwardToNextYellowTote extends Command {
+	final double DRIVE_FORWARD_TIME = 2.0; //Seconds
+	DriveForward drivingCommand;
 	Timer commandTimer;
 	
-    public MoveCarriageToFront() {
+    public DriveForwardToNextYellowTote() {
     	
     }
 
@@ -21,13 +21,13 @@ public class MoveCarriageToFront extends Command {
     	commandTimer.start();
     	commandTimer.reset();
     	
-    	drivingCommand = new MoveCarriageForward();
+    	drivingCommand = new DriveForward();
     	drivingCommand.start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (commandTimer.get() > MOVE_FORWARD_TIME) {
+    	if (commandTimer.get() > DRIVE_FORWARD_TIME) {
     		return true;
     	}
         return false;

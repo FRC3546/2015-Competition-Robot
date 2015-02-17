@@ -5,8 +5,15 @@ import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team3546.robot.commands.DashBoardCommunication;
+import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
+import org.usfirst.frc.team3546.robot.commands.MoveCarriageToBack;
+import org.usfirst.frc.team3546.robot.commands.MoveCarriageToFront;
+import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBack;
+import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
 import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
@@ -28,6 +35,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 
     Command autonomousCommand;
+    SendableChooser autoChooser;
 
     /**
      * This function is run when the robot is first started up and should be
@@ -41,15 +49,22 @@ public class Robot extends IterativeRobot {
 		DashBoardCommunication dash = new DashBoardCommunication();
 		dash.setRunWhenDisabled(true);
 		dash.start();
+		
+		autoChooser = new SendableChooser();
+		autoChooser.addDefault("Simple Drive Forward", new SimpleDriveForward());
+		autoChooser.addObject("Grab One Tote From Step", new GrabContainerFromStep());
+		
+		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
 	}
-
+		
     public void autonomousInit() {
-        // schedule the autonomous command (example)
-        if (autonomousCommand != null) autonomousCommand.start();
+//        autonomousCommand = (Command) autoChooser.getSelected();
+        autonomousCommand = new GrabContainerFromStepAndDriveBack();
+        autonomousCommand.start();
     }
 
     /**

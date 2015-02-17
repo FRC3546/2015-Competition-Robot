@@ -1,41 +1,34 @@
 package org.usfirst.frc.team3546.robot.commands;
 
+import org.usfirst.frc.team3546.robot.Robot;
+
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class MoveCarriageToFront extends Command {
-	final double MOVE_FORWARD_TIME = 3.5;//2.9; //Seconds
-	MoveCarriageForward drivingCommand;
-	Timer commandTimer;
-	
-    public MoveCarriageToFront() {
-    	
-    }
+public class DriveRight extends Command {
+    public DriveRight() {}
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	commandTimer = new Timer();
-    	commandTimer.start();
-    	commandTimer.reset();
     	
-    	drivingCommand = new MoveCarriageForward();
-    	drivingCommand.start();
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    	Robot.driveTrain.takeManualInput(0.75, 0, 0, 0);//Drive forward at 75% power
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (commandTimer.get() > MOVE_FORWARD_TIME) {
-    		return true;
-    	}
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	drivingCommand.cancel();
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
@@ -43,6 +36,4 @@ public class MoveCarriageToFront extends Command {
     protected void interrupted() {
     	end();
     }
-    
-    protected void execute() {}
 }

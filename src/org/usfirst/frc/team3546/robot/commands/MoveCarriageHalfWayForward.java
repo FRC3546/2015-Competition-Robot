@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class MoveCarriageToFront extends Command {
-	final double MOVE_FORWARD_TIME = 3.5;//2.9; //Seconds
+public class MoveCarriageHalfWayForward extends Command {
+	final double MOVE_FORWARD_TIME = 3.5/2;//2.9; //Seconds
 	MoveCarriageForward drivingCommand;
 	Timer commandTimer;
 	
-    public MoveCarriageToFront() {
+    public MoveCarriageHalfWayForward() {
     	
     }
 
