@@ -3,7 +3,10 @@ package org.usfirst.frc.team3546.robot;
 
 import org.usfirst.frc.team3546.robot.commands.DashBoardCommunication;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
+import org.usfirst.frc.team3546.robot.commands.autonomous.DragTote;
+import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStagingZone;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBack;
+import org.usfirst.frc.team3546.robot.commands.autonomous.GrabTwoContainersFromStep;
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
@@ -63,7 +66,7 @@ public class Robot extends IterativeRobot {
 		
     public void autonomousInit() {
 //        autonomousCommand = (Command) autoChooser.getSelected();
-        autonomousCommand = new GrabContainerFromStepAndDriveBack();
+        autonomousCommand = new GrabContainerFromStagingZone();
         autonomousCommand.start();
     }
 

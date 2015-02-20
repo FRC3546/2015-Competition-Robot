@@ -164,6 +164,8 @@ public class Arm extends PIDSubsystem {
     		clawCylinder.set(CLAW_RELEASE);
     	} else if (clawCylinderPosition == CLAW_RELEASE){
     		clawCylinder.set(CLAW_CHOMP);
+    	} else {
+    		clawCylinder.set(CLAW_CHOMP);
     	}
     }
     
@@ -173,6 +175,8 @@ public class Arm extends PIDSubsystem {
     		wristCylinder.set(WRIST_UP);
     	} else if (wristCylinderPosition == WRIST_UP){
     		wristCylinder.set(WRIST_DOWN);
+    	} else {
+    		wristCylinder.set(WRIST_UP);
     	}
     }
     

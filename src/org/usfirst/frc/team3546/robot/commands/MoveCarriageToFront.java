@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class MoveCarriageToFront extends Command {
-	final double MOVE_FORWARD_TIME = 3.5;//2.9; //Seconds
+	final double MOVE_FORWARD_TIME = 4.0;//2.9; //Seconds
 	MoveCarriageForward drivingCommand;
 	Timer commandTimer;
 	

@@ -4,6 +4,7 @@ import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -58,8 +59,47 @@ public class DashBoardCommunication extends Command {
     	SmartDashboard.putNumber("Tote Lift Output", Robot.toteLiftSystem.getToteLiftMotor());
     	SmartDashboard.putBoolean("LowerToteLimitSwitch", Robot.toteLiftSystem.getLowerSwitch());
     	SmartDashboard.putBoolean("UpperToteLimitSwitch", Robot.toteLiftSystem.getUpperSwitch());
-
-    }
+    	
+    	//Commands. Oh the commands
+    	SmartDashboard.putData(Scheduler.getInstance());
+    	/*
+    	SmartDashboard.putData("DriveBackward", new DriveBackward());
+    	SmartDashboard.putData("DriveForward", new DriveForward());
+    	SmartDashboard.putData("DriveForwardToNextYellowTote", new DriveForwardToNextYellowTote());
+    	SmartDashboard.putData("DriveRight", new DriveRight());
+    	SmartDashboard.putData("GrabContainerFromStep", new GrabContainerFromStep());
+    	SmartDashboard.putData("LiftToteLiftOneTote", new LiftToteLiftOneTote());
+    	SmartDashboard.putData("LowerToteLiftOneTote", new LowerToteLiftOneTote());
+    	SmartDashboard.putData("MoveArmUpATad", new MoveArmUpATad());
+    	SmartDashboard.putData("MoveArmUpFaster", new MoveArmUpFaster());
+    	SmartDashboard.putData("MoveArmUpSlowly", new MoveArmUpSlowly());
+    	SmartDashboard.putData("MoveCarriageBack", new MoveCarriageBack());
+    	SmartDashboard.putData("MoveCarriageForward", new MoveCarriageForward());
+    	SmartDashboard.putData("MoveCarriageHalfwayBack", new MoveCarriageHalfwayBack());
+    	SmartDashboard.putData("MoveCarriageHalfWayForward", new MoveCarriageHalfWayForward());
+    	SmartDashboard.putData("MoveCarriageToBack", new MoveCarriageToBack());
+    	SmartDashboard.putData("MoveCarriageToFront", new MoveCarriageToFront());
+    	SmartDashboard.putData("MoveSidewaysOneContainer", new MoveSidewaysOneContainer());
+    	SmartDashboard.putData("MoveToteLiftDown", new MoveToteLiftDown());
+    	SmartDashboard.putData("MoveToteLiftUp", new MoveToteLiftUp());
+    	SmartDashboard.putData("ResetGyro", new ResetGyro());
+    	SmartDashboard.putData("SetArmToCanLevel", new SetArmToCanLevel());
+    	SmartDashboard.putData("SetArmToStepLevel", new SetArmToStepLevel());
+    	SmartDashboard.putData("SetArmToMaxLevel", new SetArmToMaxLevel());
+    	SmartDashboard.putData("SetClawCylinderClosed", new SetClawCylinderClosed());
+    	SmartDashboard.putData("SetClawCylinderOpen", new SetClawCylinderOpen());
+    	SmartDashboard.putData("SetupToGrabFromTheStep", new SetupToGrabFromTheStep());
+    	SmartDashboard.putData("SetWristCylinderHorizontal", new SetWristCylinderHorizontal());
+    	SmartDashboard.putData("SetWristCylinderVertical", new SetWristCylinderVertical());
+    	SmartDashboard.putData("ShortRangeDriveBackward", new ShortRangeDriveBackward());
+    	SmartDashboard.putData("ShortRangeDriveForward", new ShortRangeDriveForward());
+    	SmartDashboard.putData("ToggleClawCylinder", new ToggleClawCylinder());
+    	SmartDashboard.putData("ToggleWristCylinder", new ToggleWristCylinder());
+    	SmartDashboard.putData("ToggleDriveOrientation", new ToggleDriveOrientation());
+    	SmartDashboard.putData("ToggleDrivingCentricity", new ToggleDrivingCentricity());
+    	SmartDashboard.putData("VeryShortRangeDriveForward", new VeryShortRangeDriveForward());
+    	*/
+    }     
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {

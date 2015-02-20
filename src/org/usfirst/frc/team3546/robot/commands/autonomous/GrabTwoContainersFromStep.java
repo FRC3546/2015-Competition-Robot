@@ -19,13 +19,16 @@ public class GrabTwoContainersFromStep extends CommandGroup {
     public  GrabTwoContainersFromStep() {
         addSequential(new GrabContainerFromStep());
         addSequential(new ToggleClawCylinder()); //Opens and drops the container
-        addSequential(new MoveSidewaysOneContainer()); //Moves the robot over to the next one
+        addSequential(new WaitObservationPeriod());
+        addSequential(new WaitObservationPeriod());
+        addSequential(new WaitObservationPeriod());
+//        addSequential(new MoveSidewaysOneContainer()); //Moves the robot over to the next one
         addSequential(new MoveCarriageHalfWayForward()); //Moves the cariage all the way forward
         addSequential(new SetArmToStepLevel()); //Brings the Arm in to position
         addSequential(new ToggleClawCylinder()); //Grabs container
         addSequential(new WaitObservationPeriod()); 
         addSequential(new MoveArmUpATad()); //Lifts Container up
-        addSequential(new ShortRangeDriveBackward()); //Drives in to the autozone
+//        addSequential(new ShortRangeDriveBackward()); //Drives in to the autozone
     }
 }
  
