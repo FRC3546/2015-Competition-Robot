@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3546.robot.commands.autonomous;
 
+import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfwayBack;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
@@ -7,14 +8,18 @@ import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Requires the following:
- * 	1. The robot be on the edge of the landfill, as close as possible
- *  2. The Arm be in the maximum position
- *  3. The Wrist be down and the carriage be all the way back, as to further #1
+ * Precondition:
+ * 	- The robot is placed on the edge of the landfill, as close as possible without entering
+ *  - The arm is all the way up
+ *  - The wrist is horizontal
+ *  - The claw is open
+ *  - The carriage is all the way back
+ *  - The robot is lined up with a recycling container
  */
 public class GrabContainerFromStepAndDriveBack extends CommandGroup {
     
     public  GrabContainerFromStepAndDriveBack() {
+    	Robot.gyro.setOffsetAngle(0);
         addSequential(new GrabContainerFromStep());
         addParallel(new MoveCarriageHalfwayBack());
         //Now we just need to drive into the AUTOZONE!
