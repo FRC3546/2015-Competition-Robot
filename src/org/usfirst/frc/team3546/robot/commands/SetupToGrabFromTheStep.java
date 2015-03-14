@@ -3,10 +3,13 @@ package org.usfirst.frc.team3546.robot.commands;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- * Requires the following:
- * 	1. The robot be on the edge of the landfill, as close as possible
- *  2. The Arm be in the maximum position
- *  3. The Wrist be up, claw open and the carriage be all the way back, as to further #1
+ * Precondition:
+ * 	- The robot is placed on the edge of the landfill, as close as possible without entering
+ *  - The arm is all the way up
+ *  - The wrist is horizontal
+ *  - The claw is open
+ *  - The carriage is all the way back
+ *  - The robot is lined up with a recycling container
  */
 public class SetupToGrabFromTheStep extends CommandGroup {
     

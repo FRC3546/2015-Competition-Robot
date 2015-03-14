@@ -8,7 +8,7 @@ import org.usfirst.frc.team3546.robot.commands.MoveSidewaysOneContainer;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
- *
+ * NOT FINISHED. DO NOT USE
  */
 public class PickupThreeYellows extends CommandGroup {
     
