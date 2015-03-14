@@ -40,7 +40,7 @@ public class DashBoardCommunication extends Command {
     	SmartDashboard.putNumber("RightJoystickZAxis", Robot.oi.getJoysickAxisData()[6]);
     	SmartDashboard.putNumber("RightJoystickRotAxis", Robot.oi.getJoysickAxisData()[7]);
     	
-    	SmartDashboard.putNumber("Gyro", Robot.driveTrain.getRobotAngle());
+    	SmartDashboard.putNumber("Gyro", Robot.gyro.getRobotAngle());
     	SmartDashboard.putData("PDP", Robot.PD.getPDPSendable());
     	
     	//Arm

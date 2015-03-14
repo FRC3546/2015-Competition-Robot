@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3546.robot.subsystems;
 
 import org.usfirst.frc.team3546.robot.OI;
+import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.RobotMap;
 import org.usfirst.frc.team3546.robot.commands.MecanumDrive;
 
@@ -19,7 +20,7 @@ import edu.wpi.first.wpilibj.command.Subsystem;
 public class DriveBase extends Subsystem {
 	private Victor frontLeft, frontRight, backLeft, backRight;
 	private RobotDrive mainDrive;
-	private Gyro robotOrientationGyro;
+	
 	private boolean drivingCentricity;
 	private boolean drivingOreintation; // Stores the current orientation of the drive train. Normal/Reversed
 	
@@ -42,9 +43,6 @@ public class DriveBase extends Subsystem {
 		mainDrive = new RobotDrive(frontLeft, backLeft, frontRight, backRight);
 		mainDrive.setInvertedMotor(MotorType.kFrontRight, true);
 		mainDrive.setInvertedMotor(MotorType.kRearRight, true);
-		
-		robotOrientationGyro = new Gyro(RobotMap.orientationGyroAnlgIn);
-		robotOrientationGyro.initGyro();
     }
     
     public void setDrivingOreintation(boolean newOreintation){
@@ -75,7 +73,7 @@ public class DriveBase extends Subsystem {
     	
     	double robotAngle;
     	if (getCentricity() == FIELDCENTRIC) {
-    		robotAngle = getRobotAngle();
+    		robotAngle = Robot.gyro.getRobotAngle();
     	} else {
     		robotAngle = 0; //Processed as if there's no gyro
     	}
@@ -107,18 +105,6 @@ public class DriveBase extends Subsystem {
     	        backRight.get()
     		};
     	return outputs;
-    }
-    
-    public double getRobotAngle() {
-    	return robotOrientationGyro.getAngle();
-    }
-    
-    public Sendable getGyroSendable() {
-    	return robotOrientationGyro;
-    }
-    
-    public void resetGyro(){
-    	robotOrientationGyro.initGyro();
     }
     
     public void stop() {

@@ -15,7 +15,7 @@ public class ResetGyro extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	Robot.driveTrain.resetGyro();
+    	Robot.gyro.resetGyro();
     }
     
     // Make this return true when this Command no longer needs to run execute()

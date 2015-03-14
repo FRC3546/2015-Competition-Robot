@@ -10,9 +10,11 @@ import org.usfirst.frc.team3546.robot.commands.autonomous.GrabTwoContainersFromS
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
+import org.usfirst.frc.team3546.robot.subsystems.DriveGyro;
 import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
 import org.usfirst.frc.team3546.robot.subsystems.ToteLift;
 
+import edu.wpi.first.wpilibj.Gyro;
 import edu.wpi.first.wpilibj.IterativeRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -31,6 +33,7 @@ public class Robot extends IterativeRobot {
 
 	public static final ToteLift toteLiftSystem = new ToteLift();
 	public static Arm armSystem;
+	public static final DriveGyro gyro = new DriveGyro();
 	public static final DriveBase driveTrain = new DriveBase();
 	public static final PowerDistribution PD = new PowerDistribution();
 	public static OI oi;
