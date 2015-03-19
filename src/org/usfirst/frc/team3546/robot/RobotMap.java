@@ -31,10 +31,19 @@ public class RobotMap {
     
     //Digital IO
     public static final int toteLowerLimitSwitchPort = 9;
-    public static final int toteUpperLimitSwitchPort = 1;
-    public static final int carriageRearLimitSwitchPort = 2;
-    public static final int carriageForwardLimitSwitchPort = 3;
-    public static final int armUpperLimitSwitchPort = 4;
-    public static final int armEncoderPort1 = 5;
-    public static final int armEncoderPort2 = 6;
+    public static final int toteUpperLimitSwitchPort = 10; //Used to denote null
+    public static final int carriageRearLimitSwitchPort = 11; //Used to denote null
+    public static final int carriageForwardLimitSwitchPort = 12; //Used to denote null
+    public static final int armUpperLimitSwitchPort = 6;
+    public static final int armEncoderPort1 = 7;
+    public static final int armEncoderPort2 = 8;
+    
+    //Auto Settings
+    public static final int doNothingAutoSetting = 0;
+    public static final int driveForwardAutoSetting = 1;
+    public static final int canFromStepAutoSetting = 4;
+    public static final int canFromStagingZoneAutoSetting = 3;
+    public static final int toteFromStagingZoneAutoSetting = 2;
+    public static final int driveBackwardsAutoSetting = 5;
+    public static final int bothFromStagingZoneAutoSetting = 13;
 }

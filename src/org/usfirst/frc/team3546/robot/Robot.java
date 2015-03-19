@@ -3,12 +3,14 @@ package org.usfirst.frc.team3546.robot;
 
 import org.usfirst.frc.team3546.robot.commands.DashBoardCommunication;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
+import org.usfirst.frc.team3546.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team3546.robot.commands.autonomous.DragTote;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStagingZone;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBack;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabTwoContainersFromStep;
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 import org.usfirst.frc.team3546.robot.subsystems.Arm;
+import org.usfirst.frc.team3546.robot.subsystems.AutonomousJumper;
 import org.usfirst.frc.team3546.robot.subsystems.DriveBase;
 import org.usfirst.frc.team3546.robot.subsystems.DriveGyro;
 import org.usfirst.frc.team3546.robot.subsystems.PowerDistribution;
@@ -36,6 +38,7 @@ public class Robot extends IterativeRobot {
 	public static final DriveGyro gyro = new DriveGyro();
 	public static final DriveBase driveTrain = new DriveBase();
 	public static final PowerDistribution PD = new PowerDistribution();
+	public static final AutonomousJumper AJ = new AutonomousJumper();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -68,8 +71,7 @@ public class Robot extends IterativeRobot {
 	}
 		
     public void autonomousInit() {
-//        autonomousCommand = (Command) autoChooser.getSelected();
-        autonomousCommand = new GrabContainerFromStagingZone();
+        autonomousCommand = AJ.getAutoMode();
         autonomousCommand.start();
     }
 
