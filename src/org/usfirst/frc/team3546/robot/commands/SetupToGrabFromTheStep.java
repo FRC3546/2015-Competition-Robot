@@ -16,10 +16,11 @@ public class SetupToGrabFromTheStep extends CommandGroup {
     public  SetupToGrabFromTheStep() {
     	addParallel(new VeryShortRangeDriveForward()); //Drive in to the landfill zone
     	//These can actually be done in the setup period by the drivers
-//    	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
-//    	addParallel(new SetWristCylinderHorizontal());
-    	addParallel(new MoveCarriageToFront());
+    	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
+    	addParallel(new SetWristCylinderHorizontal());
     	addSequential(new SetArmToStepLevel());
+    	addSequential(new MoveCarriageToFront());
+    	
     	//At this point, we should have our claw around the recycling container
     }
 }

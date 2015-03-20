@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3546.robot.subsystems;
 
+import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.RobotMap;
 import org.usfirst.frc.team3546.robot.commands.autonomous.DoNothing;
 import org.usfirst.frc.team3546.robot.commands.autonomous.DragTote;
@@ -51,9 +52,11 @@ public class AutonomousJumper extends Subsystem {
     	Command tempCommand = new DoNothing();
     	for (int i = 0; i < NUMMODES; i++){
     		if (getIFF(i)){
+    			System.out.println(i);
     			tempCommand = cmdArray[i];
     		}
     	}
+    	System.out.println(tempCommand);
     	return tempCommand;
     }
     
@@ -65,20 +68,29 @@ public class AutonomousJumper extends Subsystem {
     	truthArray[YELLOWTOTEARRAYPOS] = dragYellowToteSetting.get();
     	truthArray[CANFROMSTAGINGZONEARRAYPOS] = grabContainerStagingZoneSetting.get();
     	truthArray[CANFROMSTEPARRAYPOS] = grabContainerFromStepSetting.get();
+    	for (int i=0; i<NUMMODES; i++){
+    		System.out.println(i + " " + truthArray[i]);
+    	}
+    	System.out.println("Extra " + Robot.armSystem.getArmUpperSwitch());
+    	
     	return truthArray;
     }
     
     private boolean getSpecificPos(int pos){
-    	return arrayOverall[pos];
+    	System.out.println(pos + " " + arrayOverall[pos]);
+    	return !arrayOverall[pos];
     }
     
     private boolean getIFF(int pos){
     	boolean othersSelected = false;
     	for (int i = 0; i < NUMMODES; i++){
-    		if (getSpecificPos(pos) && i != pos){
+    		if (getSpecificPos(i) && i != pos){
     			othersSelected = true;
     		}
     	}
+    	System.out.println(pos + "IFF");
+    	System.out.println(othersSelected);
+    	System.out.println(getSpecificPos(pos));
     	return !othersSelected && getSpecificPos(pos);
     }
     
