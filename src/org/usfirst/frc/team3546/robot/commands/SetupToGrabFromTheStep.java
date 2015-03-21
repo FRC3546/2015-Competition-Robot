@@ -19,6 +19,8 @@ public class SetupToGrabFromTheStep extends CommandGroup {
     	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
     	addParallel(new SetWristCylinderHorizontal());
     	addSequential(new SetArmToStepLevel());
+    	addSequential(new MoveCarriageToFront());
+    	
     	//At this point, we should have our claw around the recycling container
     }
 }

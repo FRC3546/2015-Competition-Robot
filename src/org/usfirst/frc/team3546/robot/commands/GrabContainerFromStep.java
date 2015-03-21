@@ -20,6 +20,5 @@ public class GrabContainerFromStep extends CommandGroup {
         addSequential(new WaitObservationPeriod());
         addSequential(new MoveArmUpATad());
         addParallel(new MoveCarriageHalfwayBack());
-        addParallel(new MoveArmUpATad());
     }
 }
