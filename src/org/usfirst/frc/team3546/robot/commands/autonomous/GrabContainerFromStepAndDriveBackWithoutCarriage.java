@@ -2,6 +2,7 @@ package org.usfirst.frc.team3546.robot.commands.autonomous;
 
 import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
+import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStepWithoutCarriage;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfwayBack;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageToBack;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
@@ -17,11 +18,11 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *  - The carriage is all the way back
  *  - The robot is lined up with a recycling container
  */
-public class GrabContainerFromStepAndDriveBack extends CommandGroup {
+public class GrabContainerFromStepAndDriveBackWithoutCarriage extends CommandGroup {
     
-    public  GrabContainerFromStepAndDriveBack() {
+    public  GrabContainerFromStepAndDriveBackWithoutCarriage() {
     	Robot.gyro.setOffsetAngle(0);
-        addSequential(new GrabContainerFromStep());
+        addSequential(new GrabContainerFromStepWithoutCarriage());
         addParallel(new MoveCarriageToBack());
         //Now we just need to drive into the AUTOZONE!
         addSequential(new ShortRangeDriveBackward());

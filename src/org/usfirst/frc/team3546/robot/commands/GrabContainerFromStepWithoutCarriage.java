@@ -11,10 +11,10 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *  - The carriage is all the way back
  *  - The robot is lined up with a recycling container
  */
-public class GrabContainerFromStep extends CommandGroup {
+public class GrabContainerFromStepWithoutCarriage extends CommandGroup {
     
-    public  GrabContainerFromStep() {
-        addSequential(new SetupToGrabFromTheStep());
+    public  GrabContainerFromStepWithoutCarriage() {
+        addSequential(new SetupToGrabFromTheStepWithoutCarriage());
         //We should have our claw around a container now, let's grab it
         addSequential(new ToggleClawCylinder());
         addSequential(new WaitObservationPeriod());

@@ -11,14 +11,15 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *  - The carriage is all the way back
  *  - The robot is lined up with a recycling container
  */
-public class SetupToGrabFromTheStep extends CommandGroup {
+public class SetupToGrabFromTheStepWithoutCarriage extends CommandGroup {
     
-    public  SetupToGrabFromTheStep() {
-    	addParallel(new VeryShortRangeDriveForward()); //Drive in to the landfill zone
+    public  SetupToGrabFromTheStepWithoutCarriage() {
+    	addParallel(new ShortRangeDriveForward()); //Drive in to the landfill zone
     	//These can actually be done in the setup period by the drivers
     	addParallel(new SetClawCylinderOpen()); //Sets the claw to open
     	addParallel(new SetWristCylinderHorizontal());
     	addSequential(new SetArmToStepLevel());
+    	
     	//At this point, we should have our claw around the recycling container
     }
 }
