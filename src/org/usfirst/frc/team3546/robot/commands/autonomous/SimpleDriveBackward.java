@@ -13,7 +13,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SimpleDriveBackward extends CommandGroup {
     
     public  SimpleDriveBackward() {
-    	Robot.gyro.setOffsetAngle(0);
+    	Robot.gyro.setOffsetAngle(180);
     	addSequential(new ShortRangeDriveBackward());
     }
 }

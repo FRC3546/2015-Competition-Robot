@@ -7,6 +7,8 @@ import org.usfirst.frc.team3546.robot.commands.autonomous.DragTote;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStagingZone;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBack;
 import org.usfirst.frc.team3546.robot.commands.autonomous.GrabContainerFromStepAndDriveBackWithoutCarriage;
+import org.usfirst.frc.team3546.robot.commands.autonomous.MakeToteStack;
+import org.usfirst.frc.team3546.robot.commands.autonomous.PickupTote;
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveBackward;
 import org.usfirst.frc.team3546.robot.commands.autonomous.SimpleDriveForward;
 
@@ -97,11 +99,11 @@ public class AutonomousJumper extends Subsystem {
     
     private Command[] getCommandArray(){
     	Command[] tempArray = new Command[NUMMODES];
-    	tempArray[DONOTHINGARRAYPOS] = new GrabContainerFromStepAndDriveBackWithoutCarriage();
+    	tempArray[DONOTHINGARRAYPOS] = new MakeToteStack();
     	tempArray[SIMPLEDRIVEFORWARDARRAYPOS] = new SimpleDriveForward();
     	tempArray[DRIVEBACKWARDARRAYPOS] = new SimpleDriveBackward();
     	tempArray[YELLOWTOTEARRAYPOS] = new DragTote();
-    	tempArray[CANFROMSTAGINGZONEARRAYPOS] = new GrabContainerFromStagingZone();
+    	tempArray[CANFROMSTAGINGZONEARRAYPOS] = new PickupTote();
     	tempArray[CANFROMSTEPARRAYPOS] = new GrabContainerFromStepAndDriveBack();
     	return tempArray;
     }

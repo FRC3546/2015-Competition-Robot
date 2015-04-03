@@ -1,41 +1,33 @@
 package org.usfirst.frc.team3546.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
+import org.usfirst.frc.team3546.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class ShortRangeDriveBackward extends Command {
-	final double DRIVE_FORWARD_TIME = .95; //Seconds
-	DriveBackward drivingCommand;
-	Timer commandTimer;
-	
-    public ShortRangeDriveBackward() {
-    	
-    }
+public class DriveForwardSlowly extends Command {
+    public DriveForwardSlowly() {}
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	commandTimer = new Timer();
-    	commandTimer.start();
-    	commandTimer.reset();
     	
-    	drivingCommand = new DriveBackward();
-    	drivingCommand.start();
+    }
+
+    // Called repeatedly when this Command is scheduled to run
+    protected void execute() {
+    	Robot.driveTrain.takeManualInput(0, -.50, 0, 0);//Drive forward at 75% power
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if (commandTimer.get() > DRIVE_FORWARD_TIME) {
-    		return true;
-    	}
         return false;
     }
 
     // Called once after isFinished returns true
     protected void end() {
-    	drivingCommand.cancel();
+    	Robot.driveTrain.stop();
     }
 
     // Called when another command which requires one or more of the same
@@ -43,6 +35,4 @@ public class ShortRangeDriveBackward extends Command {
     protected void interrupted() {
     	end();
     }
-    
-    protected void execute() {}
 }

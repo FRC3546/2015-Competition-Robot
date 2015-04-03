@@ -6,12 +6,12 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class ShortRangeDriveBackward extends Command {
-	final double DRIVE_FORWARD_TIME = .95; //Seconds
-	DriveBackward drivingCommand;
+public class ShortRangeDriveForwardSlowlyAway extends Command {
+	final double DRIVE_FORWARD_TIME = 2.3; //Seconds
+	DriveForwardSlowly drivingCommand;
 	Timer commandTimer;
 	
-    public ShortRangeDriveBackward() {
+    public ShortRangeDriveForwardSlowlyAway() {
     	
     }
 
@@ -21,7 +21,7 @@ public class ShortRangeDriveBackward extends Command {
     	commandTimer.start();
     	commandTimer.reset();
     	
-    	drivingCommand = new DriveBackward();
+    	drivingCommand = new DriveForwardSlowly();
     	drivingCommand.start();
     }
 

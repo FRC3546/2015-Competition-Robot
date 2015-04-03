@@ -5,6 +5,9 @@ import org.usfirst.frc.team3546.robot.commands.MoveArmUpATad;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageForward;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfWayForward;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfwayBack;
+import org.usfirst.frc.team3546.robot.commands.MoveToteLiftDownABit;
+import org.usfirst.frc.team3546.robot.commands.MoveToteLiftDownOneTote;
+import org.usfirst.frc.team3546.robot.commands.MoveToteLiftUpOneTote;
 import org.usfirst.frc.team3546.robot.commands.SetArmToCanLevel;
 import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
 import org.usfirst.frc.team3546.robot.commands.SetClawCylinderClosed;
@@ -14,6 +17,10 @@ import org.usfirst.frc.team3546.robot.commands.SetWristCylinderVertical;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackwardSlowly;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackwardSlowlyAway;
+import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveForwardSlowlyAway;
+import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveForwardSlowlyAwayFromLandFill;
+import org.usfirst.frc.team3546.robot.commands.VeryShortRangeDriveBackward;
+import org.usfirst.frc.team3546.robot.commands.VeryShortRangeDriveForward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
@@ -25,17 +32,21 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  *  - The claw is closed
  *  - The wrist is horizontal
  */
-public class DragTote extends CommandGroup {
+public class MakeToteStack extends CommandGroup {
     
-    public  DragTote() {
+    public  MakeToteStack() {
     	Robot.gyro.setOffsetAngle(180);
-    	addParallel(new SetWristCylinderVertical());
-        addParallel(new SetClawCylinderClosed());
-        addSequential(new SetArmToStepLevel());
-        addParallel(new MoveCarriageHalfwayBack());
-        addSequential(new ShortRangeDriveBackwardSlowlyAway());
-        addSequential(new MoveArmUpATad());
-        addSequential(new SetWristCylinderHorizontal());
-        addSequential(new MoveArmUpATad());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new MoveToteLiftUpOneTote());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new MoveToteLiftDownABit());
+    	addSequential(new VeryShortRangeDriveForward());
+    	addSequential(new MoveToteLiftDownOneTote());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new VeryShortRangeDriveBackward());
+    	addSequential(new MoveToteLiftUpOneTote());
+    	addSequential(new ShortRangeDriveForwardSlowlyAwayFromLandFill());
     }
 }
