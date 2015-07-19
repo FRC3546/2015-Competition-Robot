@@ -1,6 +1,7 @@
 package org.usfirst.frc.team3546.robot.commands.autonomous;
 
 import org.usfirst.frc.team3546.robot.Robot;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset0;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveForward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -12,7 +13,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class SimpleDriveForward extends CommandGroup {
     
     public  SimpleDriveForward() {
-    	Robot.gyro.setOffsetAngle(0);
+    	addParallel(new SetGyroOffset0());
     	addSequential(new ShortRangeDriveForward());
     }
 }

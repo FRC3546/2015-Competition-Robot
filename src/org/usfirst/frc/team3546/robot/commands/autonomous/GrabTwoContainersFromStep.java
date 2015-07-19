@@ -6,6 +6,7 @@ import org.usfirst.frc.team3546.robot.commands.MoveArmUpATad;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfWayForward;
 import org.usfirst.frc.team3546.robot.commands.MoveSidewaysOneContainer;
 import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset0;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
 import org.usfirst.frc.team3546.robot.commands.ToggleClawCylinder;
 import org.usfirst.frc.team3546.robot.commands.WaitObservationPeriod;
@@ -24,7 +25,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GrabTwoContainersFromStep extends CommandGroup {
     
     public  GrabTwoContainersFromStep() {
-    	Robot.gyro.setOffsetAngle(0);
+    	addParallel(new SetGyroOffset0());
         addSequential(new GrabContainerFromStep());
         addSequential(new ToggleClawCylinder()); //Opens and drops the container
         addSequential(new WaitObservationPeriod());

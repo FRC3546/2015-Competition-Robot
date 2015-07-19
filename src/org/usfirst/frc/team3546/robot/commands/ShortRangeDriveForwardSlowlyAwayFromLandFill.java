@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ShortRangeDriveForwardSlowlyAwayFromLandFill extends Command {
-	final double DRIVE_FORWARD_TIME = 2; //Seconds
+	final double DRIVE_FORWARD_TIME = 1.9; //Seconds
 	DriveForwardSlowly drivingCommand;
 	Timer commandTimer;
 	

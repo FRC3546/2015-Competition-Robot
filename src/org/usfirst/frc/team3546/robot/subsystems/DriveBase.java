@@ -66,6 +66,7 @@ public class DriveBase extends Subsystem {
     	double verticalDriveInput = stick.getAxis(OI.drivingVerticalAxis);
     	double rotationalDriveInput = stick.getAxis(OI.drivingRotationalAxis);
     	
+    	rotationalDriveInput = rotationalDriveInput * .5;
     	if (drivingOreintation == REVERSEDDRIVE) {
     		horizontalDriveInput = -1 * horizontalDriveInput;
     		verticalDriveInput = -1 * verticalDriveInput;

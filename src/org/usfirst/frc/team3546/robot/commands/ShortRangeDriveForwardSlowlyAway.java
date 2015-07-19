@@ -7,7 +7,7 @@ import edu.wpi.first.wpilibj.command.Command;
  *
  */
 public class ShortRangeDriveForwardSlowlyAway extends Command {
-	final double DRIVE_FORWARD_TIME = 2.3; //Seconds
+	final double DRIVE_FORWARD_TIME = 2.05; //Seconds
 	DriveForwardSlowly drivingCommand;
 	Timer commandTimer;
 	

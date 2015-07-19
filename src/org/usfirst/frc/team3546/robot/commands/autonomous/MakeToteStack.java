@@ -12,6 +12,8 @@ import org.usfirst.frc.team3546.robot.commands.SetArmToCanLevel;
 import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
 import org.usfirst.frc.team3546.robot.commands.SetClawCylinderClosed;
 import org.usfirst.frc.team3546.robot.commands.SetClawCylinderOpen;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset0;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset180;
 import org.usfirst.frc.team3546.robot.commands.SetWristCylinderHorizontal;
 import org.usfirst.frc.team3546.robot.commands.SetWristCylinderVertical;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
@@ -35,7 +37,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class MakeToteStack extends CommandGroup {
     
     public  MakeToteStack() {
-    	Robot.gyro.setOffsetAngle(180);
+    	addParallel(new SetGyroOffset180());
     	addSequential(new VeryShortRangeDriveBackward());
     	addSequential(new MoveToteLiftUpOneTote());
     	addSequential(new VeryShortRangeDriveBackward());
@@ -45,7 +47,7 @@ public class MakeToteStack extends CommandGroup {
     	addSequential(new VeryShortRangeDriveForward());
     	addSequential(new MoveToteLiftDownOneTote());
     	addSequential(new VeryShortRangeDriveBackward());
-    	addSequential(new VeryShortRangeDriveBackward());
+    	addParallel(new VeryShortRangeDriveBackward());
     	addSequential(new MoveToteLiftUpOneTote());
     	addSequential(new ShortRangeDriveForwardSlowlyAwayFromLandFill());
     }

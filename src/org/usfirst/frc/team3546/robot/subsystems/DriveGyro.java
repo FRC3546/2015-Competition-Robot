@@ -38,7 +38,12 @@ public class DriveGyro extends Subsystem {
     }
     
     public void setOffsetAngle(double angle){
+    	System.out.println("Reseting gyro offset to " + angle);
     	offsetAngle = angle;
+    }
+    
+    public double getOffsetAngle(){
+    	return offsetAngle;
     }
 }
 
