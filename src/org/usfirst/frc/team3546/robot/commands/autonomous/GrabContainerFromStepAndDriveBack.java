@@ -4,6 +4,7 @@ import org.usfirst.frc.team3546.robot.Robot;
 import org.usfirst.frc.team3546.robot.commands.GrabContainerFromStep;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageHalfwayBack;
 import org.usfirst.frc.team3546.robot.commands.MoveCarriageToBack;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset0;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
 
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -20,7 +21,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GrabContainerFromStepAndDriveBack extends CommandGroup {
     
     public  GrabContainerFromStepAndDriveBack() {
-    	Robot.gyro.setOffsetAngle(0);
+    	addParallel(new SetGyroOffset0());
         addSequential(new GrabContainerFromStep());
         addParallel(new MoveCarriageToBack());
         //Now we just need to drive into the AUTOZONE!

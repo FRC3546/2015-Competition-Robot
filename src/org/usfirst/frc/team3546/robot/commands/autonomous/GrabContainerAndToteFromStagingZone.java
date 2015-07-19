@@ -6,6 +6,8 @@ import org.usfirst.frc.team3546.robot.commands.MoveCarriageForward;
 import org.usfirst.frc.team3546.robot.commands.SetArmToStepLevel;
 import org.usfirst.frc.team3546.robot.commands.SetClawCylinderClosed;
 import org.usfirst.frc.team3546.robot.commands.SetClawCylinderOpen;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset0;
+import org.usfirst.frc.team3546.robot.commands.SetGyroOffset180;
 import org.usfirst.frc.team3546.robot.commands.SetWristCylinderHorizontal;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackward;
 import org.usfirst.frc.team3546.robot.commands.ShortRangeDriveBackwardSlowly;
@@ -25,7 +27,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class GrabContainerAndToteFromStagingZone extends CommandGroup {
     
     public  GrabContainerAndToteFromStagingZone() {
-    	Robot.gyro.setOffsetAngle(180);
+    	addParallel(new SetGyroOffset180());
     	addSequential(new SetClawCylinderOpen());
     	addSequential(new SetWristCylinderHorizontal());
     	addSequential(new SetArmToStepLevel());
