@@ -24,92 +24,135 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-/**
- * The VM is configured to automatically run this class, and to call the
- * functions corresponding to each mode, as described in the IterativeRobot
- * documentation. If you change the name of this class or the package after
- * creating this project, you must also update the manifest file in the resource
- * directory.
- */
+/***********************************************************************
+ * This is the primary class that is called by the RoboRIO throughout
+ * the code's lifecycle. It contains all of the instances of robot
+ * subsystems and the command run during autonomous.
+ **********************************************************************/
 public class Robot extends IterativeRobot {
-
+    /**
+     * The subsystem containing all of the sensors and actuators
+     * in the tote lift
+     */
 	public static final ToteLift toteLiftSystem = new ToteLift();
-	public static Arm armSystem;
-	public static final DriveGyro gyro = new DriveGyro();
-	public static final DriveBase driveTrain = new DriveBase();
-	public static final PowerDistribution PD = new PowerDistribution();
-	public static final AutonomousJumper AJ = new AutonomousJumper();
-	public static OI oi;
-
-    Command autonomousCommand;
-    SendableChooser autoChooser;
 
     /**
-     * This function is run when the robot is first started up and should be
-     * used for any initialization code.
+     * The subsystem containing all of the sensors and actuators in the
+     * arm
      */
+	public static Arm armSystem;
+
+    /**
+     * The subsystem for the gyro in the center of the chassis
+     */
+	public static final DriveGyro gyro = new DriveGyro();
+
+    /**
+     * The subsystem for the four drive train motors
+     */
+	public static final DriveBase driveTrain = new DriveBase();
+
+    /**
+     * The subsystem for the power distribution network on the robot
+     */
+	public static final PowerDistribution PD = new PowerDistribution();
+
+    /**
+     * The subsystem for the jumper used to select an autonomous mode
+     */
+	public static final AutonomousJumper AJ = new AutonomousJumper();
+
+    /**
+     * The operator interface for the robot. Joysticks and GUI
+     */
+	public static OI oi;
+
+    /**
+     * The command that gets run during autonomous mode
+     */
+    Command autonomousCommand;
+
+    /*******************************************************************
+     * This function is run when the robot is first powered on
+     ******************************************************************/
     public void robotInit() {
+        //Print out console info
     	System.out.println("Robot intializing");
+
+        //Create a new Operator interface
     	oi = new OI();
-    	
+
+        //Create a new arm system, only set the position of the arm
+        // if the robot is not going into autonomous mode
     	armSystem = new Arm(!this.isAutonomous());
 		
 		//Start communication with the SmartDashboard
 		DashBoardCommunication dash = new DashBoardCommunication();
 		dash.setRunWhenDisabled(true);
 		dash.start();
-		
-		autoChooser = new SendableChooser();
-		autoChooser.addDefault("Simple Drive Forward", new SimpleDriveForward());
-		autoChooser.addObject("Grab One Tote From Step", new GrabContainerFromStep());
-		
-		SmartDashboard.putData("Autonomous mode chooser", autoChooser);
     }
-	
+
+    /*******************************************************************
+     * Called continuously while the robot is disabled
+     * Just lets the command scheduler run
+     ******************************************************************/
 	public void disabledPeriodic() {
+        //TODO: Determine what this does and comment
 		Scheduler.getInstance().run();
 	}
-		
+
+    /*******************************************************************
+     * Called once whenever autonomous mode is enabled
+     * Creates and runs an autonomousCommand
+     ******************************************************************/
     public void autonomousInit() {
+        //Call a method of the autonomous jumper which returns
+        //the command to run based on the jumper position
         autonomousCommand = AJ.getAutoMode();
+
+        //Start that command
         autonomousCommand.start();
     }
 
-    /**
-     * This function is called periodically during autonomous
-     */
+    /*******************************************************************
+     * Called periodically during autonomous
+     * Just lets the command scheduler run
+     ******************************************************************/
     public void autonomousPeriodic() {
+        //TODO: Determine what this does and comment
         Scheduler.getInstance().run();
     }
 
+    /*******************************************************************
+     * Called once whenever teloperated mode is enabled
+     ******************************************************************/
     public void teleopInit() {
-		// This makes sure that the autonomous stops running when
-        // teleop starts running. If you want the autonomous to 
-        // continue until interrupted by another command, remove
-        // this line or comment it out.
+        //If the command is still running from autonomous, kill it
         if (autonomousCommand != null) autonomousCommand.cancel();
+
+        //Let the console know we're going into teleop
         System.out.println("Teleop intializing");
     }
 
-    /**
-     * This function is called when the disabled button is hit.
-     * You can use it to reset subsystems before shutting down.
-     */
-    public void disabledInit(){
+    /*******************************************************************
+     * Called once whenever the robot is disabled
+     ******************************************************************/
+    public void disabledInit(){}
 
-    }
-
-    /**
-     * This function is called periodically during operator control
-     */
+    /*******************************************************************
+     * Called continuously during teleoperated mode
+     * Just lets the command scheduler run
+     ******************************************************************/
     public void teleopPeriodic() {
+        //TODO: Determine what this does and comment
         Scheduler.getInstance().run();
     }
     
-    /**
+    /*******************************************************************
      * This function is called periodically during test mode
-     */
+     ******************************************************************/
     public void testPeriodic() {
+        //TODO: Determine what this does and comment
         LiveWindow.run();
     }
 }
